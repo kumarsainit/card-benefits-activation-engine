@@ -69,4 +69,16 @@ class JwtServiceTest {
     void shouldReturnFalseForInvalidToken() {
         assertThat(jwtService.validateToken("invalid.token.string")).isFalse();
     }
+
+    @Test
+    @DisplayName("Should generate valid BCrypt hashes for demo users")
+    void shouldGenerateBCryptHashes() {
+        org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder encoder =
+                new org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder();
+        String customerHash = encoder.encode("Password123!");
+        String adminHash = encoder.encode("AdminSecure2026!");
+
+        assertThat(encoder.matches("Password123!", customerHash)).isTrue();
+        assertThat(encoder.matches("AdminSecure2026!", adminHash)).isTrue();
+    }
 }

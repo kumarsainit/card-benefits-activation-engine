@@ -53,7 +53,7 @@ public class NotificationController {
     @Operation(summary = "Subscribe to real-time Server-Sent Events (SSE) notification stream")
     public SseEmitter subscribeToStream(@RequestParam(name = "token", required = false) String token) {
         UUID customerId;
-        if (token != null && jwtService.validateToken(token)) {
+        if (org.springframework.util.StringUtils.hasText(token) && !"null".equalsIgnoreCase(token) && !"undefined".equalsIgnoreCase(token) && jwtService.validateToken(token)) {
             customerId = jwtService.extractUserId(token);
         } else {
             customerId = UUID.fromString("11111111-1111-1111-1111-111111111111"); // Demo fallback customer

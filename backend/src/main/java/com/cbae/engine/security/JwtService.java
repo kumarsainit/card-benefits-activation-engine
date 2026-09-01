@@ -94,6 +94,9 @@ public class JwtService {
     }
 
     public boolean validateToken(String token) {
+        if (!org.springframework.util.StringUtils.hasText(token) || "null".equalsIgnoreCase(token) || "undefined".equalsIgnoreCase(token)) {
+            return false;
+        }
         try {
             Jwts.parser()
                     .verifyWith(getSigningKey())
@@ -101,15 +104,15 @@ public class JwtService {
                     .parseSignedClaims(token);
             return true;
         } catch (MalformedJwtException ex) {
-            log.error("Invalid JWT token: {}", ex.getMessage());
+            log.warn("Invalid JWT token: {}", ex.getMessage());
         } catch (ExpiredJwtException ex) {
-            log.error("Expired JWT token: {}", ex.getMessage());
+            log.debug("Expired JWT token: {}", ex.getMessage());
         } catch (UnsupportedJwtException ex) {
-            log.error("Unsupported JWT token: {}", ex.getMessage());
+            log.warn("Unsupported JWT token: {}", ex.getMessage());
         } catch (IllegalArgumentException ex) {
-            log.error("JWT claims string is empty: {}", ex.getMessage());
+            log.debug("JWT claims string is empty: {}", ex.getMessage());
         } catch (Exception ex) {
-            log.error("JWT validation error: {}", ex.getMessage());
+            log.warn("JWT validation error: {}", ex.getMessage());
         }
         return false;
     }

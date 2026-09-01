@@ -44,7 +44,11 @@ export class ApiClient {
 
   public getToken(): string | null {
     if (typeof window === 'undefined') return null;
-    return localStorage.getItem(TOKEN_KEY);
+    const token = localStorage.getItem(TOKEN_KEY);
+    if (!token || token === 'null' || token === 'undefined' || token.trim() === '') {
+      return null;
+    }
+    return token.trim();
   }
 
   public setToken(token: string, refreshToken?: string, user?: User): void {

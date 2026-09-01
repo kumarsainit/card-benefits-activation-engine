@@ -190,4 +190,54 @@ class AuthControllerIntegrationTest {
         mockMvc.perform(get("/api/v1/auth/me"))
                 .andExpect(status().isUnauthorized());
     }
+
+    @Test
+    @DisplayName("POST /api/v1/auth/login should authenticate demo customer successfully")
+    void shouldLoginDemoCustomer() throws Exception {
+        customerRepository.save(Customer.builder()
+                .email("customer@example.com")
+                .fullName("Alex Carter")
+                .passwordHash(passwordEncoder.encode("Password123!"))
+                .role(UserRole.ROLE_CUSTOMER)
+                .build());
+
+        LoginRequest request = LoginRequest.builder()
+                .email("customer@example.com")
+                .password("Password123!")
+                .build();
+
+        mockMvc.perform(post("/api/v1/auth/login")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.success", is(true)))
+                .andExpect(jsonPath("$.data.accessToken", notNullValue()))
+                .andExpect(jsonPath("$.data.user.email", is("customer@example.com")))
+                .andExpect(jsonPath("$.data.user.role", is("ROLE_CUSTOMER")));
+    }
+
+    @Test
+    @DisplayName("POST /api/v1/auth/login should authenticate demo admin successfully")
+    void shouldLoginDemoAdmin() throws Exception {
+        customerRepository.save(Customer.builder()
+                .email("admin@cbae.internal")
+                .fullName("System Admin")
+                .passwordHash(passwordEncoder.encode("AdminSecure2026!"))
+                .role(UserRole.ROLE_ADMIN)
+                .build());
+
+        LoginRequest request = LoginRequest.builder()
+                .email("admin@cbae.internal")
+                .password("AdminSecure2026!")
+                .build();
+
+        mockMvc.perform(post("/api/v1/auth/login")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.success", is(true)))
+                .andExpect(jsonPath("$.data.accessToken", notNullValue()))
+                .andExpect(jsonPath("$.data.user.email", is("admin@cbae.internal")))
+                .andExpect(jsonPath("$.data.user.role", is("ROLE_ADMIN")));
+    }
 }
