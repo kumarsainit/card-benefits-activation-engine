@@ -6,6 +6,20 @@ The **Card Benefits Activation Engine (CBAE)** is an event-driven fintech platfo
 
 ---
 
+## 🌐 Live Demo & Public Deployment
+
+- **Public Frontend URL**: [https://cbae-frontend.onrender.com](https://cbae-frontend.onrender.com)
+- **Public Backend API**: [https://cbae-backend.onrender.com/api/v1](https://cbae-backend.onrender.com/api/v1)
+- **Swagger API Docs**: [https://cbae-backend.onrender.com/swagger-ui.html](https://cbae-backend.onrender.com/swagger-ui.html)
+
+### Demo Credentials (Pre-seeded)
+| Persona | Email | Password | Role / Scope |
+| :--- | :--- | :--- | :--- |
+| **Cardholder (Customer)** | `customer@example.com` | `Password123!` | Dashboard, Benefits, Claim Activation Wizard, SSE Alerts |
+| **Operations Admin** | `admin@cbae.internal` | `AdminSecure2026!` | Claims Adjudication Queue, Decisions, Value Analytics |
+
+---
+
 ## 🌟 Key Capabilities
 
 1. **Intelligent Real-Time Benefit Engine**: Evaluates card swipes against configurable policy parameters (MCC categories, swipe amounts, coverage windows, common carrier delay thresholds).

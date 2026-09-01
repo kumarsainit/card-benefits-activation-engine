@@ -17,7 +17,10 @@ export class SSEClient {
 
     this.isConnecting = true;
     const token = apiClient.getToken();
-    const baseUrl = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
+    const baseUrl =
+      process.env.NEXT_PUBLIC_API_BASE_URL ||
+      process.env.NEXT_PUBLIC_API_URL ||
+      '/api/v1';
     const streamUrl = `${baseUrl}/notifications/stream${token ? `?token=${encodeURIComponent(token)}` : ''}`;
 
     try {

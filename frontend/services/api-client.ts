@@ -36,7 +36,10 @@ export class ApiClient {
   private baseUrl: string;
 
   constructor() {
-    this.baseUrl = process.env.NEXT_PUBLIC_API_URL || '/api/v1';
+    this.baseUrl =
+      process.env.NEXT_PUBLIC_API_BASE_URL ||
+      process.env.NEXT_PUBLIC_API_URL ||
+      '/api/v1';
   }
 
   public getToken(): string | null {
