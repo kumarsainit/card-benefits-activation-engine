@@ -21,6 +21,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
 import { EvidenceUploader, UploadedEvidenceItem } from '@/components/claims/evidence-uploader';
+import { ClaimTrackingTimeline } from '@/components/claims/claim-tracking-timeline';
 import { useClaim, useAddEvidence } from '@/features/claims/use-claims';
 import { formatCurrency, formatDate } from '@/lib/utils';
 import { toast } from 'sonner';
@@ -175,6 +176,16 @@ export default function ClaimDetailPage() {
               </p>
             </div>
           )}
+
+          {/* Claim Lifecycle Timeline */}
+          <div className="pt-2">
+            <ClaimTrackingTimeline
+              status={claim.status}
+              createdAt={claim.createdAt}
+              updatedAt={claim.updatedAt}
+              adjudicationNotes={claim.adjudicationNotes}
+            />
+          </div>
 
           {/* Attached Evidences Section */}
           <div className="space-y-4 pt-4 border-t border-slate-200/60 dark:border-slate-800/60">

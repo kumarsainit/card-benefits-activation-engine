@@ -3,6 +3,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import LandingPage from '@/app/page';
 import { AuthProvider } from '@/providers/auth-provider';
+import { QueryProvider } from '@/providers/query-provider';
 
 vi.mock('next/navigation', () => ({
   usePathname: () => '/',
@@ -15,7 +16,9 @@ describe('Landing Page', () => {
   it('renders hero headline, protection pillars, and trust disclosures', () => {
     render(
       <AuthProvider>
-        <LandingPage />
+        <QueryProvider>
+          <LandingPage />
+        </QueryProvider>
       </AuthProvider>
     );
 

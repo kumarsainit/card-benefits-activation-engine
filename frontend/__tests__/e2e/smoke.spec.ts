@@ -47,4 +47,9 @@ test.describe('Protected Customer Routes Smoke Test', () => {
     await page.goto('/claims');
     await expect(page).toHaveURL(/.*login/);
   });
+
+  test('unauthenticated visitor to /notifications redirects to /login', async ({ page }) => {
+    await page.goto('/notifications');
+    await expect(page).toHaveURL(/.*login/);
+  });
 });

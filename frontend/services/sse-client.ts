@@ -11,7 +11,7 @@ export class SSEClient {
   private isConnecting = false;
 
   public connect(): void {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined' || typeof EventSource === 'undefined') return;
     if (this.eventSource && this.eventSource.readyState === EventSource.OPEN) return;
     if (this.isConnecting) return;
 

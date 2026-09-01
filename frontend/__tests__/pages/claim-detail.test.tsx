@@ -75,7 +75,7 @@ describe('ClaimDetailPage', () => {
     const refNumber = await screen.findByText('CLM-2026-A83B1');
     expect(refNumber).toBeInTheDocument();
 
-    expect(screen.getByText('APPROVED')).toBeInTheDocument();
+    expect(screen.getAllByText('APPROVED').length).toBeGreaterThan(0);
     expect(screen.getByText(/Laptop accidentally dropped/i)).toBeInTheDocument();
     expect(screen.getByText('receipt.pdf')).toBeInTheDocument();
   });

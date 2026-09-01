@@ -5,6 +5,7 @@ import userEvent from '@testing-library/user-event';
 import LoginPage from '@/app/login/page';
 import RegisterPage from '@/app/register/page';
 import { AuthProvider } from '@/providers/auth-provider';
+import { QueryProvider } from '@/providers/query-provider';
 import { apiClient, ApiError } from '@/services/api-client';
 
 const mockPush = vi.fn();
@@ -25,7 +26,9 @@ describe('Authentication Pages', () => {
     it('renders login form with demo credentials buttons', () => {
       render(
         <AuthProvider>
-          <LoginPage />
+          <QueryProvider>
+            <LoginPage />
+          </QueryProvider>
         </AuthProvider>
       );
 
@@ -52,7 +55,9 @@ describe('Authentication Pages', () => {
 
       const { container } = render(
         <AuthProvider>
-          <LoginPage />
+          <QueryProvider>
+            <LoginPage />
+          </QueryProvider>
         </AuthProvider>
       );
 
@@ -79,7 +84,9 @@ describe('Authentication Pages', () => {
 
       const { container } = render(
         <AuthProvider>
-          <LoginPage />
+          <QueryProvider>
+            <LoginPage />
+          </QueryProvider>
         </AuthProvider>
       );
 
@@ -100,7 +107,9 @@ describe('Authentication Pages', () => {
     it('renders registration fields and password requirement badge', () => {
       render(
         <AuthProvider>
-          <RegisterPage />
+          <QueryProvider>
+            <RegisterPage />
+          </QueryProvider>
         </AuthProvider>
       );
 

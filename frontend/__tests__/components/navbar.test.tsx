@@ -3,6 +3,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { Navbar } from '@/components/layout/navbar';
 import { AuthProvider } from '@/providers/auth-provider';
+import { QueryProvider } from '@/providers/query-provider';
 
 // Mock next/navigation
 vi.mock('next/navigation', () => ({
@@ -16,7 +17,9 @@ describe('Navbar Component', () => {
   it('renders brand logo and public navigation links for unauthenticated visitors', () => {
     render(
       <AuthProvider>
-        <Navbar />
+        <QueryProvider>
+          <Navbar />
+        </QueryProvider>
       </AuthProvider>
     );
 

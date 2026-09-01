@@ -18,6 +18,7 @@ import {
 } from '@phosphor-icons/react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { NotificationDropdown } from '@/components/notifications/notification-dropdown';
 import { useAuth } from '@/providers/auth-provider';
 import { cn } from '@/lib/utils';
 
@@ -114,6 +115,9 @@ export function Navbar() {
               {theme === 'dark' ? <Sun className="h-4 w-4 text-amber-400" /> : <Moon className="h-4 w-4 text-slate-700" />}
             </Button>
           )}
+
+          {/* Real-time Notifications Bell */}
+          {isAuthenticated && <NotificationDropdown />}
 
           {/* Auth Controls */}
           {isAuthenticated ? (
