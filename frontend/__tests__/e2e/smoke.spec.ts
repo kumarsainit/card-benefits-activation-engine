@@ -1,21 +1,38 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Frontend Foundation Smoke Test', () => {
-  test('renders foundation showcase page with design system primitives and pillars', async ({ page }) => {
+test.describe('Public & Auth Navigation Smoke Test', () => {
+  test('renders landing page with headline, CTAs, and protection pillars', async ({ page }) => {
     await page.goto('/');
 
-    // Check page title and header
-    await expect(page.locator('h1')).toContainText('Card Benefit Activation Engine');
-    await expect(page.getByText('Design System & Architecture Foundation')).toBeVisible();
+    // Hero title check
+    await expect(page.locator('h1')).toContainText('Your card may already');
+    await expect(page.getByText('protect more than you think.')).toBeVisible();
 
-    // Check three core benefit pillars
-    await expect(page.getByText('Purchase Protection')).toBeVisible();
-    await expect(page.getByText('Return Protection')).toBeVisible();
-    await expect(page.getByText('Travel Delay Insurance')).toBeVisible();
+    // CTAs check
+    await expect(page.getByRole('button', { name: 'See How It Works' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Sign In to Engine' })).toBeVisible();
 
-    // Check design system tabs
-    await expect(page.getByRole('tab', { name: 'Buttons & Badges' })).toBeVisible();
-    await expect(page.getByRole('tab', { name: 'Form Inputs' })).toBeVisible();
-    await expect(page.getByRole('tab', { name: 'Progress & Spinners' })).toBeVisible();
+    // 3 Built-in Protections check
+    await expect(page.getByRole('heading', { name: 'Purchase Protection' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Return Protection' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Travel Delay Insurance' })).toBeVisible();
+  });
+
+  test('navigates to Login page and displays credentials form with demo helpers', async ({ page }) => {
+    await page.goto('/login');
+
+    await expect(page.getByRole('heading', { name: 'Sign In' })).toBeVisible();
+    await expect(page.getByPlaceholder('name@example.com')).toBeVisible();
+    await expect(page.getByText('Quick Demo Accounts')).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Cardholder' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Operations Admin' })).toBeVisible();
+  });
+
+  test('navigates to Register page and displays legal name and password indicators', async ({ page }) => {
+    await page.goto('/register');
+
+    await expect(page.getByRole('heading', { name: 'Create Account' })).toBeVisible();
+    await expect(page.getByPlaceholder('Alex Carter')).toBeVisible();
+    await expect(page.getByText('At least 8 characters')).toBeVisible();
   });
 });
