@@ -80,6 +80,7 @@ export function AdminShell({ children }: AdminShellProps) {
   const adminNavItems = [
     { label: 'Operations Overview', href: '/admin', icon: <SquaresFour className="h-4 w-4" /> },
     { label: 'Claims Queue', href: '/admin/claims', icon: <Queue className="h-4 w-4" /> },
+    { label: 'Analytics', href: '/admin/analytics', icon: <ChartPieSlice className="h-4 w-4" /> },
   ];
 
   return (

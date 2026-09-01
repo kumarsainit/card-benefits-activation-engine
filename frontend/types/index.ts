@@ -196,12 +196,12 @@ export interface Notification {
 }
 
 export interface AdminAnalytics {
+  totalPotentialValueDetected: number;
   totalOpportunitiesDetected: number;
-  totalPotentialValueAmount: number;
   totalClaimsSubmitted: number;
   totalClaimsApproved: number;
-  totalValueRealizedAmount: number;
-  averageProcessingTimeHours: number;
-  conversionRatePercent: number;
-  benefitBreakdown: Record<string, number>;
+  totalClaimsUnderReview: number;
+  totalValueUnlockedDollars: number;
+  benefitUtilizationRatePercent: number;
+  totalEnrolledCards: number;
 }
