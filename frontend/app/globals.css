@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 238.7 83.5% 58.6%;
+    --primary-foreground: 210 40% 98%;
+    --primary-hover: 243.4 75.4% 49%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 238.7 83.5% 58.6%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 224 71.4% 4.1%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 238.7 83.5% 66%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary-hover: 238.7 83.5% 58.6%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 238.7 83.5% 66%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased min-h-screen font-sans selection:bg-primary/20 selection:text-primary;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Glassmorphism Surface Utility Classes */
+.glass-primary {
+  @apply backdrop-blur-md bg-white/75 dark:bg-slate-900/70 border border-slate-200/70 dark:border-slate-800/70 shadow-sm;
+}
+
+.glass-secondary {
+  @apply backdrop-blur-sm bg-white/45 dark:bg-slate-900/45 border border-slate-200/50 dark:border-slate-800/50;
+}
+
+.glass-elevated {
+  @apply backdrop-blur-xl bg-white/90 dark:bg-slate-900/85 border border-slate-200/90 dark:border-slate-700/70 shadow-2xl;
+}
+
+.glass-interactive {
+  @apply transition-all duration-300 backdrop-blur-md bg-white/75 hover:bg-white/95 dark:bg-slate-900/70 dark:hover:bg-slate-900/90 border border-slate-200/70 hover:border-indigo-500/40 dark:border-slate-800/70 dark:hover:border-indigo-400/40 hover:shadow-lg hover:shadow-indigo-500/5 cursor-pointer;
+}
+
+/* Micro-interaction highlight glow */
+.benefit-glow-purchase {
+  @apply border-l-4 border-l-indigo-500 shadow-indigo-500/5;
+}
+
+.benefit-glow-return {
+  @apply border-l-4 border-l-purple-500 shadow-purple-500/5;
+}
+
+.benefit-glow-travel {
+  @apply border-l-4 border-l-sky-500 shadow-sky-500/5;
+}
