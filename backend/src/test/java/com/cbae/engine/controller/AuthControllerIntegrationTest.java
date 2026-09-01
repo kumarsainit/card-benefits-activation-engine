@@ -30,6 +30,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
+@org.springframework.transaction.annotation.Transactional
 class AuthControllerIntegrationTest {
 
     @Autowired
@@ -46,11 +47,6 @@ class AuthControllerIntegrationTest {
 
     @Autowired
     private JwtService jwtService;
-
-    @BeforeEach
-    void setUp() {
-        customerRepository.deleteAll();
-    }
 
     @Test
     @DisplayName("POST /api/v1/auth/register should create new user and return tokens")
