@@ -14,12 +14,15 @@ export type OpportunityStatus = 'DETECTED' | 'VIEWED' | 'CLAIM_INITIATED' | 'DIS
 
 export type ClaimStatus =
   | 'DRAFT'
+  | 'READY_FOR_REVIEW'
   | 'SUBMITTED'
   | 'UNDER_REVIEW'
   | 'ADDITIONAL_INFORMATION_REQUIRED'
   | 'APPROVED'
+  | 'PARTIALLY_APPROVED'
   | 'REJECTED'
-  | 'PAID';
+  | 'PAID'
+  | 'CLOSED';
 
 export type EvidenceType =
   | 'RECEIPT'

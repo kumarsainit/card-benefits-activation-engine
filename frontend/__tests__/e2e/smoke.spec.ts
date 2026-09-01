@@ -53,3 +53,15 @@ test.describe('Protected Customer Routes Smoke Test', () => {
     await expect(page).toHaveURL(/.*login/);
   });
 });
+
+test.describe('Protected Admin Routes Smoke Test', () => {
+  test('unauthenticated visitor to /admin redirects to /login', async ({ page }) => {
+    await page.goto('/admin');
+    await expect(page).toHaveURL(/.*login/);
+  });
+
+  test('unauthenticated visitor to /admin/claims redirects to /login', async ({ page }) => {
+    await page.goto('/admin/claims');
+    await expect(page).toHaveURL(/.*login/);
+  });
+});
