@@ -36,3 +36,10 @@ test.describe('Public & Auth Navigation Smoke Test', () => {
     await expect(page.getByText('At least 8 characters')).toBeVisible();
   });
 });
+
+test.describe('Customer Experience Pages Smoke Test', () => {
+  test('unauthenticated visitor to /dashboard redirects to /login', async ({ page }) => {
+    await page.goto('/dashboard');
+    await expect(page).toHaveURL(/.*login/);
+  });
+});

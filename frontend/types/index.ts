@@ -1,32 +1,41 @@
-export type BenefitType = 'PURCHASE_PROTECTION' | 'RETURN_PROTECTION' | 'TRAVEL_DELAY';
+export type UserRole = 'ROLE_CUSTOMER' | 'ROLE_ADMIN';
 
 export type CardNetwork = 'VISA' | 'MASTERCARD' | 'AMEX' | 'DISCOVER';
 
-export type CardTier = 'PLATINUM' | 'SAPPHIRE_RESERVE' | 'GOLD' | 'STANDARD';
+export type CardTier = 'PLATINUM' | 'GOLD' | 'SAPPHIRE_RESERVE' | 'STANDARD';
 
-export type CardStatus = 'ACTIVE' | 'INACTIVE' | 'EXPIRED';
+export type BenefitType = 'PURCHASE_PROTECTION' | 'RETURN_PROTECTION' | 'TRAVEL_DELAY';
 
-export type TransactionStatus = 'SETTLED' | 'PENDING' | 'REFUNDED' | 'DISPUTED' | 'CANCELLED';
+export type CardStatus = 'ACTIVE' | 'INACTIVE' | 'EXPIRED' | 'BLOCKED';
+
+export type TransactionStatus = 'PENDING' | 'SETTLED' | 'REFUNDED' | 'DISPUTED';
 
 export type OpportunityStatus = 'DETECTED' | 'VIEWED' | 'CLAIM_INITIATED' | 'DISMISSED' | 'EXPIRED';
 
 export type ClaimStatus =
   | 'DRAFT'
-  | 'READY_FOR_REVIEW'
   | 'SUBMITTED'
   | 'UNDER_REVIEW'
   | 'ADDITIONAL_INFORMATION_REQUIRED'
   | 'APPROVED'
-  | 'PARTIALLY_APPROVED'
   | 'REJECTED'
-  | 'PAID'
-  | 'CLOSED';
+  | 'PAID';
 
-export type EvidenceType = 'RECEIPT' | 'DAMAGE_PHOTO' | 'REPAIR_ESTIMATE' | 'POLICE_REPORT' | 'MERCHANT_DENIAL' | 'CARRIER_STATEMENT' | 'OTHER';
+export type EvidenceType =
+  | 'RECEIPT'
+  | 'DAMAGE_PHOTO'
+  | 'POLICE_REPORT'
+  | 'MERCHANT_RETURN_DENIAL'
+  | 'FLIGHT_DELAY_STATEMENT'
+  | 'BOARDING_PASS'
+  | 'OTHER';
 
-export type UserRole = 'ROLE_CUSTOMER' | 'ROLE_ADMIN';
-
-export type NotificationType = 'OPPORTUNITY_DETECTED' | 'CLAIM_STATUS_UPDATED' | 'CLAIM_ACTION_REQUIRED' | 'SYSTEM_ALERT';
+export type NotificationType =
+  | 'BENEFIT_DETECTED'
+  | 'CLAIM_STATUS_UPDATE'
+  | 'DOCUMENT_REQUEST'
+  | 'EXPIRATION_REMINDER'
+  | 'SYSTEM_ALERT';
 
 export type NotificationPriority = 'LOW' | 'MEDIUM' | 'HIGH' | 'URGENT';
 
@@ -77,6 +86,7 @@ export interface CardBenefit {
 
 export interface Card {
   id: string;
+  customerId?: string;
   cardNumberLast4: string;
   cardNetwork: CardNetwork;
   cardTier: CardTier;
@@ -84,14 +94,17 @@ export interface Card {
   expiryMonth: number;
   expiryYear: number;
   status: CardStatus;
-  benefits: CardBenefit[];
+  benefits?: CardBenefit[];
   createdAt: string;
 }
 
 export interface Transaction {
   id: string;
   cardId: string;
+  customerId?: string;
   cardNumberLast4?: string;
+  cardNetwork?: string;
+  cardTier?: string;
   transactionReference: string;
   amount: number;
   currency: string;
@@ -109,87 +122,83 @@ export interface Transaction {
     departureAirport?: string;
     arrivalAirport?: string;
   };
+  createdAt?: string;
 }
 
 export interface BenefitOpportunity {
   id: string;
-  cardId: string;
-  cardNumberLast4: string;
-  cardNetwork: string;
-  cardTier: string;
+  customerId?: string;
   transactionId: string;
-  transactionReference: string;
-  transactionAmount: number;
-  merchantName: string;
-  transactionTimestamp: string;
+  cardId: string;
+  benefitId: string;
   benefitType: BenefitType;
   benefitName: string;
+  merchantName: string;
+  transactionAmount: number;
   potentialClaimAmount: number;
   confidenceScore: number;
   eligibilityReasons: string[];
-  requiredEvidence: string[];
-  prefillData: Record<string, any>;
+  requiredEvidenceList: string[];
   status: OpportunityStatus;
+  cardNetwork?: string;
+  cardNumberLast4?: string;
   expiryDate?: string;
+  prefillData?: Record<string, any>;
   createdAt: string;
 }
 
 export interface ClaimEvidence {
   id: string;
-  evidenceType: EvidenceType;
+  claimId: string;
   fileName: string;
   fileUrl: string;
   fileSize: number;
   mimeType: string;
+  evidenceType: EvidenceType;
   isVerified: boolean;
-  createdAt: string;
+  uploadedAt: string;
 }
 
 export interface Claim {
   id: string;
   claimReferenceNumber: string;
-  opportunityId?: string;
   customerId: string;
-  customerName: string;
-  customerEmail: string;
   transactionId: string;
-  transactionReference: string;
-  transactionAmount: number;
-  merchantName: string;
-  cardId: string;
-  cardNumberLast4: string;
-  cardTier: string;
-  benefitType: BenefitType;
-  benefitName: string;
+  cardBenefitId: string;
+  opportunityId?: string;
   requestedAmount: number;
   approvedAmount?: number;
   status: ClaimStatus;
   incidentDate: string;
   submissionNotes?: string;
   adjudicationNotes?: string;
-  evidences: ClaimEvidence[];
+  merchantName?: string;
+  benefitType?: BenefitType;
+  benefitName?: string;
+  evidences?: ClaimEvidence[];
   createdAt: string;
   updatedAt: string;
 }
 
 export interface Notification {
   id: string;
+  customerId: string;
   title: string;
   message: string;
   notificationType: NotificationType;
   priority: NotificationPriority;
-  deepLink?: string;
   isRead: boolean;
+  deepLink?: string;
   createdAt: string;
 }
 
 export interface AdminAnalytics {
-  totalPotentialValueDetected: number;
   totalOpportunitiesDetected: number;
+  totalPotentialValueAmount: number;
   totalClaimsSubmitted: number;
   totalClaimsApproved: number;
-  totalClaimsUnderReview: number;
-  totalValueUnlockedDollars: number;
-  benefitUtilizationRatePercent: number;
-  totalEnrolledCards: number;
+  totalValueRealizedAmount: number;
+  averageProcessingTimeHours: number;
+  conversionRatePercent: number;
+  benefitBreakdown: Record<string, number>;
 }
