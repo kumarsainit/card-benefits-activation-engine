@@ -10,7 +10,8 @@ VALUES
 ON CONFLICT (id) DO UPDATE SET
     email = EXCLUDED.email,
     password_hash = EXCLUDED.password_hash,
-    full_name = EXCLUDED.full_name;
+    full_name = EXCLUDED.full_name,
+    role = EXCLUDED.role;
 
 -- 2. Ensure Admin (admin@cbae.internal / AdminSecure2026!)
 INSERT INTO customers (id, email, full_name, password_hash, role, created_at, updated_at)
@@ -19,4 +20,10 @@ VALUES
 ON CONFLICT (id) DO UPDATE SET
     email = EXCLUDED.email,
     password_hash = EXCLUDED.password_hash,
-    full_name = EXCLUDED.full_name;
+    full_name = EXCLUDED.full_name,
+    role = EXCLUDED.role;
+
+-- 3. Update cardholder names on demo cards
+UPDATE cards
+SET cardholder_name = 'Alex Carter'
+WHERE customer_id = '11111111-1111-1111-1111-111111111111';

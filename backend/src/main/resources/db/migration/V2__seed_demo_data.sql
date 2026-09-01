@@ -7,12 +7,9 @@
 -- 1. Demo Customers
 INSERT INTO customers (id, email, full_name, password_hash, role, created_at, updated_at)
 VALUES 
-    ('11111111-1111-1111-1111-111111111111', 'customer@example.com', 'Alex Carter', '$2a$10$ZMBYefiPZkXvZWugMC.AR.gtsqLVqcwSiA6CcRtDsna8R0EILQQVi', 'ROLE_CUSTOMER', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('22222222-2222-2222-2222-222222222222', 'admin@cbae.internal', 'System Admin', '$2a$10$6VM/5n/KPh2E3vf4L7MHvOTFXMKFZGklH/6EFP0fNcnxpIcFj9fnC', 'ROLE_ADMIN', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
-ON CONFLICT (id) DO UPDATE SET
-    email = EXCLUDED.email,
-    password_hash = EXCLUDED.password_hash,
-    full_name = EXCLUDED.full_name;
+    ('11111111-1111-1111-1111-111111111111', 'john.doe@example.com', 'John Doe', '$2a$10$7Tx6JmK4qFm2XlJ4mE07yeVqB77QW42qK6Xq2f8/tVl1j3p8kO1kO', 'ROLE_CUSTOMER', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+    ('22222222-2222-2222-2222-222222222222', 'admin@cbae.internal', 'System Admin', '$2a$10$7Tx6JmK4qFm2XlJ4mE07yeVqB77QW42qK6Xq2f8/tVl1j3p8kO1kO', 'ROLE_ADMIN', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+ON CONFLICT (id) DO NOTHING;
 
 -- 2. Demo Cards for John Doe
 -- Card 1: Platinum Card (Rich Purchase & Return Protection)
