@@ -37,9 +37,14 @@ test.describe('Public & Auth Navigation Smoke Test', () => {
   });
 });
 
-test.describe('Customer Experience Pages Smoke Test', () => {
+test.describe('Protected Customer Routes Smoke Test', () => {
   test('unauthenticated visitor to /dashboard redirects to /login', async ({ page }) => {
     await page.goto('/dashboard');
+    await expect(page).toHaveURL(/.*login/);
+  });
+
+  test('unauthenticated visitor to /claims redirects to /login', async ({ page }) => {
+    await page.goto('/claims');
     await expect(page).toHaveURL(/.*login/);
   });
 });
