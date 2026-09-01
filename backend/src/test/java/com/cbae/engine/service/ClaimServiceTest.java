@@ -192,4 +192,88 @@ class ClaimServiceTest {
         assertThat(reviewed.getApprovedAmount()).isEqualByComparingTo(new BigDecimal("500.00"));
         assertThat(reviewed.getAdjudicationNotes()).contains("Approved full amount");
     }
+
+    @Test
+    @DisplayName("Should reject illegal state transitions such as REJECTED to APPROVED")
+    void shouldRejectIllegalStateTransitions() {
+        ClaimSubmissionRequest request = ClaimSubmissionRequest.builder()
+                .transactionId(transaction.getId())
+                .cardBenefitId(benefit.getId())
+                .requestedAmount(new BigDecimal("300.00"))
+                .incidentDate(Instant.now())
+                .build();
+
+        ClaimResponseDto submitted = claimService.submitClaim(customer.getId(), request, null);
+
+        // Reject first
+        claimService.reviewClaim(submitted.getId(), admin.getId(), ClaimReviewRequest.builder()
+                .status(ClaimStatus.REJECTED)
+                .adjudicationNotes("Documentation insufficient")
+                .build());
+
+        // Now attempt to transition from REJECTED to APPROVED (illegal)
+        assertThatThrownBy(() -> claimService.reviewClaim(submitted.getId(), admin.getId(), ClaimReviewRequest.builder()
+                .status(ClaimStatus.APPROVED)
+                .approvedAmount(new BigDecimal("300.00"))
+                .build()))
+                .isInstanceOf(BusinessValidationException.class)
+                .hasMessageContaining("Illegal claim state transition from REJECTED to APPROVED");
+    }
+
+    @Test
+    @DisplayName("Should support full lifecycle: SUBMITTED -> UNDER_REVIEW -> ADDITIONAL_INFO -> PARTIALLY_APPROVED -> PAID -> CLOSED")
+    void shouldSupportComprehensiveLifecycle() {
+        ClaimSubmissionRequest request = ClaimSubmissionRequest.builder()
+                .transactionId(transaction.getId())
+                .cardBenefitId(benefit.getId())
+                .requestedAmount(new BigDecimal("1000.00"))
+                .incidentDate(Instant.now())
+                .build();
+
+        ClaimResponseDto claim = claimService.submitClaim(customer.getId(), request, null);
+
+        // 1. Move to UNDER_REVIEW
+        claim = claimService.reviewClaim(claim.getId(), admin.getId(), ClaimReviewRequest.builder()
+                .status(ClaimStatus.UNDER_REVIEW)
+                .adjudicationNotes("Under adjudication")
+                .build());
+        assertThat(claim.getStatus()).isEqualTo(ClaimStatus.UNDER_REVIEW);
+
+        // 2. Move to ADDITIONAL_INFORMATION_REQUIRED
+        claim = claimService.reviewClaim(claim.getId(), admin.getId(), ClaimReviewRequest.builder()
+                .status(ClaimStatus.ADDITIONAL_INFORMATION_REQUIRED)
+                .adjudicationNotes("Please upload police report")
+                .build());
+        assertThat(claim.getStatus()).isEqualTo(ClaimStatus.ADDITIONAL_INFORMATION_REQUIRED);
+
+        // 3. Move back to UNDER_REVIEW
+        claim = claimService.reviewClaim(claim.getId(), admin.getId(), ClaimReviewRequest.builder()
+                .status(ClaimStatus.UNDER_REVIEW)
+                .adjudicationNotes("Police report received")
+                .build());
+        assertThat(claim.getStatus()).isEqualTo(ClaimStatus.UNDER_REVIEW);
+
+        // 4. PARTIALLY_APPROVED
+        claim = claimService.reviewClaim(claim.getId(), admin.getId(), ClaimReviewRequest.builder()
+                .status(ClaimStatus.PARTIALLY_APPROVED)
+                .approvedAmount(new BigDecimal("750.00"))
+                .adjudicationNotes("Approved up to verified loss")
+                .build());
+        assertThat(claim.getStatus()).isEqualTo(ClaimStatus.PARTIALLY_APPROVED);
+        assertThat(claim.getApprovedAmount()).isEqualByComparingTo(new BigDecimal("750.00"));
+
+        // 5. PAID
+        claim = claimService.reviewClaim(claim.getId(), admin.getId(), ClaimReviewRequest.builder()
+                .status(ClaimStatus.PAID)
+                .adjudicationNotes("Direct deposit payout initiated")
+                .build());
+        assertThat(claim.getStatus()).isEqualTo(ClaimStatus.PAID);
+
+        // 6. CLOSED
+        claim = claimService.reviewClaim(claim.getId(), admin.getId(), ClaimReviewRequest.builder()
+                .status(ClaimStatus.CLOSED)
+                .adjudicationNotes("Claim finalized and archived")
+                .build());
+        assertThat(claim.getStatus()).isEqualTo(ClaimStatus.CLOSED);
+    }
 }

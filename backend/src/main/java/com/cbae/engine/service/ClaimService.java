@@ -197,10 +197,14 @@ public class ClaimService {
                 .orElseThrow(() -> new ResourceNotFoundException("Claim not found"));
 
         ClaimStatus newStatus = request.getStatus();
+        if (!claim.getStatus().canTransitionTo(newStatus)) {
+            throw new BusinessValidationException("Illegal claim state transition from " + claim.getStatus() + " to " + newStatus);
+        }
+
         claim.setStatus(newStatus);
         claim.setAdjudicationNotes(request.getAdjudicationNotes());
 
-        if (newStatus == ClaimStatus.APPROVED) {
+        if (newStatus == ClaimStatus.APPROVED || newStatus == ClaimStatus.PARTIALLY_APPROVED) {
             claim.setApprovedAmount(request.getApprovedAmount() != null ? request.getApprovedAmount() : claim.getRequestedAmount());
         }
 
