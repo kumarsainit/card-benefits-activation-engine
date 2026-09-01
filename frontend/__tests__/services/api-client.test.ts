@@ -68,4 +68,44 @@ describe('ApiClient Foundation', () => {
       errorCode: 'VALIDATION_ERROR',
     });
   });
+
+  it('filters empty, null, and undefined tokens without sending malformed headers', async () => {
+    localStorage.setItem('cbae_auth_token', 'undefined');
+    expect(client.getToken()).toBeNull();
+
+    localStorage.setItem('cbae_auth_token', 'null');
+    expect(client.getToken()).toBeNull();
+
+    localStorage.setItem('cbae_auth_token', '   ');
+    expect(client.getToken()).toBeNull();
+
+    const mockFetch = vi.fn().mockResolvedValue({
+      ok: true,
+      status: 200,
+      json: async () => ({ success: true, data: [] }),
+    });
+    global.fetch = mockFetch;
+
+    await client.getCards();
+    const calledHeaders = mockFetch.mock.calls[0][1].headers;
+    expect(calledHeaders['Authorization']).toBeUndefined();
+  });
+
+  it('clears token on 401 unauthorized response from protected endpoint', async () => {
+    client.setToken('expired.jwt.token');
+    expect(client.getToken()).toBe('expired.jwt.token');
+
+    global.fetch = vi.fn().mockResolvedValue({
+      ok: false,
+      status: 401,
+      json: async () => ({
+        success: false,
+        message: 'Authentication required',
+        errorCode: 'UNAUTHORIZED',
+      }),
+    });
+
+    await expect(client.getCards()).rejects.toThrow(ApiError);
+    expect(client.getToken()).toBeNull();
+  });
 });

@@ -40,9 +40,11 @@ describe('Authentication Pages', () => {
     it('submits valid credentials and calls API client', async () => {
       const user = userEvent.setup();
       const loginSpy = vi.spyOn(apiClient, 'login').mockResolvedValue({
+        accessToken: 'jwt.token.abc',
         token: 'jwt.token.abc',
         refreshToken: 'refresh.token.abc',
         tokenType: 'Bearer',
+        expiresIn: 3600,
         expiresInSeconds: 3600,
         user: {
           id: 'user-1',

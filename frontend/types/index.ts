@@ -67,11 +67,13 @@ export interface User {
 }
 
 export interface AuthResponse {
-  token: string;
+  accessToken: string;
   refreshToken: string;
   tokenType: string;
-  expiresInSeconds: number;
+  expiresIn: number;
   user: User;
+  token?: string;
+  expiresInSeconds?: number;
 }
 
 export interface CardBenefit {

@@ -172,7 +172,7 @@ export default function LoginPage() {
                 </button>
                 <button
                   type="button"
-                  onClick={() => handleAutofillDemo('admin@cbae.internal', 'AdminSecret123!')}
+                  onClick={() => handleAutofillDemo('admin@cbae.internal', 'AdminSecure2026!')}
                   className="p-2 rounded-xl bg-slate-100/70 hover:bg-slate-200/80 dark:bg-slate-800/50 dark:hover:bg-slate-800 border border-slate-200/60 dark:border-slate-700/60 text-left transition-all text-[11px]"
                 >
                   <p className="font-semibold text-foreground">Operations Admin</p>

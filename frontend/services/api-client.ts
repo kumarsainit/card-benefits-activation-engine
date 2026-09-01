@@ -51,11 +51,23 @@ export class ApiClient {
     return token.trim();
   }
 
-  public setToken(token: string, refreshToken?: string, user?: User): void {
+  public setToken(token?: string | null, refreshToken?: string | null, user?: User | null): void {
     if (typeof window === 'undefined') return;
-    localStorage.setItem(TOKEN_KEY, token);
-    if (refreshToken) localStorage.setItem(REFRESH_TOKEN_KEY, refreshToken);
-    if (user) localStorage.setItem(USER_KEY, JSON.stringify(user));
+    if (token && typeof token === 'string' && token !== 'null' && token !== 'undefined' && token.trim() !== '') {
+      localStorage.setItem(TOKEN_KEY, token.trim());
+    } else {
+      localStorage.removeItem(TOKEN_KEY);
+    }
+    if (refreshToken && typeof refreshToken === 'string' && refreshToken !== 'null' && refreshToken !== 'undefined' && refreshToken.trim() !== '') {
+      localStorage.setItem(REFRESH_TOKEN_KEY, refreshToken.trim());
+    } else {
+      localStorage.removeItem(REFRESH_TOKEN_KEY);
+    }
+    if (user) {
+      localStorage.setItem(USER_KEY, JSON.stringify(user));
+    } else {
+      localStorage.removeItem(USER_KEY);
+    }
   }
 
   public clearToken(): void {
@@ -117,6 +129,12 @@ export class ApiClient {
       const errorMsg = json?.message || `Request failed with status ${response.status}`;
       const errorCode = json?.errorCode || 'API_ERROR';
       const fieldErrors = json?.fieldErrors;
+
+      // Clear token on 401 from protected endpoints (excluding login/register attempts)
+      if (response.status === 401 && !endpoint.includes('/auth/login') && !endpoint.includes('/auth/register')) {
+        this.clearToken();
+      }
+
       throw new ApiError(response.status, errorMsg, errorCode, fieldErrors);
     }
 
