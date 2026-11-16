@@ -1,0 +1,18 @@
+perf db reset
+backend UP after 6s (pid 16570)
+20:40:33 done phase3 ingest run 1
+perf db reset
+backend UP after 6s (pid 17236)
+20:50:23 done phase3 ingest run 2
+perf db reset
+backend UP after 6s (pid 17605)
+21:00:12 done phase3 ingest run 3
+perf db reset
+backend UP after 6s (pid 17856)
+21:12:27 done phase3 read run 1
+perf db reset
+backend UP after 6s (pid 18231)
+21:24:41 done phase3 read run 2
+perf db reset
+backend UP after 6s (pid 18674)
+21:36:55 done phase3 read run 3

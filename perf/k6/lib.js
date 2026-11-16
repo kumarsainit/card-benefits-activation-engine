@@ -17,7 +17,7 @@ export const CARD_SAPPHIRE = 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb'; // TRAVEL_D
 
 export function login() {
   const res = http.post(`${API}/auth/login`, JSON.stringify({ email: EMAIL, password: PASSWORD }),
-    { headers: { 'Content-Type': 'application/json' }, tags: { name: 'login' } });
+    { headers: { 'Content-Type': 'application/json' }, tags: { name: 'login' }, responseType: 'text' });
   if (res.status !== 200) throw new Error(`login failed: ${res.status} ${res.body}`);
   const data = res.json('data');
   return data.accessToken || data.token;
