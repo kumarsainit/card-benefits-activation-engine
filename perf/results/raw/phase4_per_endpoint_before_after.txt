@@ -1,0 +1,18 @@
+== phase3
+stage 100 get_cards          p(50) 2.3 (2.2-2.3)  p(95) 3.1 (2.8-3.4)
+stage 100 get_opportunities  p(50) 37.6 (36.8-38.0)  p(95) 44.3 (39.7-46.8)
+stage 100 get_transactions   p(50) 3.5 (3.5-3.6)  p(95) 4.5 (4.2-4.7)
+stage 100 get_claims         p(50) 1.8 (1.7-1.8)  p(95) 2.5 (2.3-2.5)
+stage 300 get_cards          p(50) 2.5 (2.4-2.5)  p(95) 3.3 (3.1-32.4)
+stage 300 get_opportunities  p(50) 61.5 (60.2-62.8)  p(95) 70.5 (69.3-142.8)
+stage 300 get_transactions   p(50) 3.9 (3.8-3.9)  p(95) 5.3 (5.1-33.4)
+stage 300 get_claims         p(50) 1.9 (1.9-2.0)  p(95) 2.5 (2.4-31.8)
+== phase4_after
+stage 100 get_cards          p(50) 4.1 (3.8-4.9)  p(95) 9.0 (7.6-12.2)
+stage 100 get_opportunities  p(50) 15.2 (13.9-15.6)  p(95) 24.7 (19.5-26.9)
+stage 100 get_transactions   p(50) 6.0 (5.3-6.1)  p(95) 12.3 (8.2-14.9)
+stage 100 get_claims         p(50) 2.8 (2.6-3.0)  p(95) 5.5 (4.2-7.5)
+stage 300 get_cards          p(50) 2.1 (2.0-2.2)  p(95) 2.9 (2.9-3.8)
+stage 300 get_opportunities  p(50) 8.0 (7.8-8.1)  p(95) 9.3 (9.3-11.1)
+stage 300 get_transactions   p(50) 4.1 (4.0-4.2)  p(95) 5.4 (5.4-6.9)
+stage 300 get_claims         p(50) 1.8 (1.8-1.9)  p(95) 2.4 (2.4-3.4)
