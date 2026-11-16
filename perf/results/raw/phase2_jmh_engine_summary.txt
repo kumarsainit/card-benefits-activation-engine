@@ -1,0 +1,9 @@
+benchmark                                                  forks  median ns/op     min-max ns/op  median evals/s (1 thread)
+engine_purchaseProtection_eligible                             3        1719.5   1689.1-1752.6                      581,567
+engine_purchaseProtection_ineligibleExcludedMcc                3         101.2    101.2-102.1                     9,881,568
+engine_returnProtection_eligible                               3        1634.7   1628.9-1640.4                      611,716
+engine_travelDelay_eligible                                    3        2285.3   2279.5-2304.2                      437,587
+strategy_purchaseProtection_eligible                           3         398.5    371.3-445.8                     2,509,391
+strategy_purchaseProtection_ineligibleExcludedMcc              3          35.9     35.8-36.1                     27,841,150
+strategy_returnProtection_eligible                             3         357.8    317.3-360.0                     2,795,086
+strategy_travelDelay_eligible                                  3         238.5    227.8-240.0                     4,193,498
