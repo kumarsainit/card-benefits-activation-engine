@@ -3,6 +3,7 @@ package com.cbae.engine.repository;
 import com.cbae.engine.domain.BenefitOpportunity;
 import com.cbae.engine.domain.enums.BenefitType;
 import com.cbae.engine.domain.enums.OpportunityStatus;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -15,7 +16,11 @@ import java.util.UUID;
 
 @Repository
 public interface BenefitOpportunityRepository extends JpaRepository<BenefitOpportunity, UUID> {
+    // card and transaction are read for every row by BenefitOpportunityService.mapToDto; fetch them in the same
+    // query instead of one lazy SELECT per transaction (N+1, measured in perf/results/raw/phase4_before_*).
+    @EntityGraph(attributePaths = {"card", "transaction"})
     List<BenefitOpportunity> findByCustomerIdOrderByCreatedAtDesc(UUID customerId);
+    @EntityGraph(attributePaths = {"card", "transaction"})
     List<BenefitOpportunity> findByCustomerIdAndStatusOrderByCreatedAtDesc(UUID customerId, OpportunityStatus status);
     Optional<BenefitOpportunity> findByTransactionIdAndBenefitType(UUID transactionId, BenefitType benefitType);
     boolean existsByTransactionIdAndBenefitType(UUID transactionId, BenefitType benefitType);
