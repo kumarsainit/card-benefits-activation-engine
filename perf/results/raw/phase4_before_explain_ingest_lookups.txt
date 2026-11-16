@@ -1,0 +1,34 @@
+                                                                         QUERY PLAN                                                                          
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using transaction_events_idempotency_key_key on transaction_events  (cost=0.14..8.16 rows=1 width=473) (actual time=0.010..0.010 rows=0 loops=1)
+   Index Cond: ((idempotency_key)::text = 'seed-x'::text)
+   Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=129
+ Planning Time: 0.793 ms
+ Execution Time: 0.032 ms
+(7 rows)
+
+                                                                      QUERY PLAN                                                                       
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using transactions_transaction_reference_key on transactions  (cost=0.14..8.16 rows=1 width=313) (actual time=0.010..0.010 rows=0 loops=1)
+   Index Cond: ((transaction_reference)::text = 'seed-x'::text)
+   Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=98
+ Planning Time: 0.410 ms
+ Execution Time: 0.016 ms
+(7 rows)
+
+                                                                    QUERY PLAN                                                                     
+---------------------------------------------------------------------------------------------------------------------------------------------------
+ Index Only Scan using uk_transaction_benefit on benefit_opportunities  (cost=0.27..8.29 rows=1 width=4) (actual time=0.014..0.014 rows=0 loops=1)
+   Index Cond: ((transaction_id = '00000000-0000-0000-0000-000000000000'::uuid) AND (benefit_type = 'PURCHASE_PROTECTION'::text))
+   Heap Fetches: 0
+   Buffers: shared hit=2
+ Planning:
+   Buffers: shared hit=71
+ Planning Time: 0.568 ms
+ Execution Time: 0.030 ms
+(8 rows)
+

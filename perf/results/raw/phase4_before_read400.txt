@@ -1,0 +1,2 @@
+time="2026-11-16T21:39:37+05:30" level=warning msg="Insufficient VUs, reached 1000 active VUs and cannot initialize more" executor=constant-arrival-rate scenario=s400
+[{"stage_rps":400,"achieved_rps":366.3,"requests":21977,"error_rate":0,"dropped_iterations":2024,"p50_ms":2386.236,"p95_ms":3080.8432000000003,"p99_ms":3259.9813999999997,"max_ms":3956.071}]

@@ -1,0 +1,8 @@
+GET /api/v1/cards rows=2 sql_statements=4 200 0.008644s
+GET /api/v1/opportunities rows=300 sql_statements=154 200 0.082928s
+GET /api/v1/transactions rows=200 sql_statements=4 200 0.016806s
+GET /api/v1/claims rows=0 sql_statements=2 200 0.011171s
+statements in last /opportunities request: 153
+  150  select from transactions where t1_0.id=?
+    2  select from cards where c1_0.id=?
+    1  select from benefit_opportunities where bo1_0.customer_id=?

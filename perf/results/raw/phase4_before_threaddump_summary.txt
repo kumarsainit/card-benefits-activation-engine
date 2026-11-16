@@ -1,0 +1,3 @@
+perf/results/raw/phase4_before_threaddump_1.txt {'waiting for Hikari connection [TIMED_WAITING]': 189, 'in Postgres I/O (query) [RUNNABLE]': 7, 'idle (waiting for request) [RUNNABLE]': 2, 'Jackson (JSON) [RUNNABLE]': 2}
+perf/results/raw/phase4_before_threaddump_2.txt {'waiting for Hikari connection [TIMED_WAITING]': 190, 'in Postgres I/O (query) [RUNNABLE]': 8, 'idle (waiting for request) [RUNNABLE]': 2}
+perf/results/raw/phase4_before_threaddump_3.txt {'waiting for Hikari connection [TIMED_WAITING]': 190, 'in Postgres I/O (query) [RUNNABLE]': 9, 'idle (waiting for request) [RUNNABLE]': 1}
