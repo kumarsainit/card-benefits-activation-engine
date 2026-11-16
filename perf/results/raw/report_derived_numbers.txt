@@ -1,0 +1,16 @@
+== Phase 5 idempotency (DB row counts, whole perf DB) per run
+phase5_before 1 tx,events,opps,dupRef,dupKey,dupOpp before (22450, 22450, 33500, 0, 0, 0) after REST (22450, 22450, 33500, 0, 0, 0) after Kafka (22450, 22450, 33500, 0, 0, 0)
+phase5_before 2 tx,events,opps,dupRef,dupKey,dupOpp before (22450, 22450, 33500, 0, 0, 0) after REST (22450, 22450, 33500, 0, 0, 0) after Kafka (22450, 22450, 33500, 0, 0, 0)
+phase5_before 3 tx,events,opps,dupRef,dupKey,dupOpp before (22450, 22450, 33500, 0, 0, 0) after REST (22450, 22450, 33500, 0, 0, 0) after Kafka (22450, 22450, 33500, 0, 0, 0)
+phase5_after 1 tx,events,opps,dupRef,dupKey,dupOpp before (22950, 22950, 34500, 0, 0, 0) after REST (22950, 22950, 34500, 0, 0, 0) after Kafka (22950, 22950, 34500, 0, 0, 0)
+phase5_after 2 tx,events,opps,dupRef,dupKey,dupOpp before (22950, 22950, 34500, 0, 0, 0) after REST (22950, 22950, 34500, 0, 0, 0) after Kafka (22950, 22950, 34500, 0, 0, 0)
+phase5_after 3 tx,events,opps,dupRef,dupKey,dupOpp before (22950, 22950, 34500, 0, 0, 0) after REST (22950, 22950, 34500, 0, 0, 0) after Kafka (22950, 22950, 34500, 0, 0, 0)
+== % changes from medians
+GET /opportunities @250 p50 63.2->8.4: 86.7%
+GET /opportunities @250 p95 74.8->9.6: 87.2%
+read mix @250 p95 66.0->8.9: 86.5%
+read max sustainable 300->800: +167% (x2.67)
+SQL per request 154->2: 98.7% fewer
+Kafka valid lost 500->0, malformed untraced 50->0
+Kafka faulty-batch drain 50.94->174.26 s: +242%
+Kafka fault-free throughput 250.01->248.23 ev/s (first-to-last persist): 0.7%
