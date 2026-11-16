@@ -247,7 +247,25 @@ surefire: tests=55 failures=0 errors=0 skipped=0
 
 ---
 
-## Not verified (needs Render)
+## Render deployment: confirmed (17 Nov 2026)
+
+After the local checks above, the Blueprint was deployed from `main` at commit `b09ec9b`:
+
+- Render accepted the Blueprint and created `cbae-postgres`, `cbae-backend` and `cbae-frontend`.
+- Both web services reached **Live** on the first deploy (backend 3 min 28 s, frontend 2 min 30 s,
+  as shown on each service's Deploys page).
+- The services were assigned exactly `https://cbae-backend.onrender.com` and
+  `https://cbae-frontend.onrender.com`, so no URL changes were needed.
+- The repository owner then checked the backend health endpoint and signed in through the
+  frontend; both worked.
+
+This resolves these items from the list below: Blueprint acceptance, the service subdomains,
+the shape of Render's `connectionString` (the backend started and connected), startup within
+Render's deploy window, and Render's Docker and Node builds. Memory behaviour on the real
+instance, spin-down and wake-up timing, and the Postgres expiry date were not measured or
+observed here.
+
+## Not verified (still open after the Render deploy)
 
 - That Render accepts the Blueprint (`render blueprints validate` needs a logged-in workspace).
 - That the services get the subdomains `cbae-backend.onrender.com` / `cbae-frontend.onrender.com`.

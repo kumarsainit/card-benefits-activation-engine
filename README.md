@@ -2,13 +2,33 @@
 
 > **Autonomous Value Realization for Built-In Credit Card Insurance Protections**
 
+**🌐 Live demo: <https://cbae-frontend.onrender.com>** · [API](https://cbae-backend.onrender.com/api/v1) · [Health](https://cbae-backend.onrender.com/actuator/health) · [Demo logins](#demo-credentials-pre-seeded)
+
 The **Card Benefits Activation Engine (CBAE)** is an event-driven fintech platform that monitors credit card transactions, automatically evaluates eligibility for built-in card protections (Purchase Protection, Return Protection, and Travel Delay Insurance), surfaces explainable opportunities in real-time, and streamlines prefilled claim filing and adjudication.
+
+---
+
+## 🌐 Live demo
+
+Hosted on Render's free plan:
+
+- **Frontend:** <https://cbae-frontend.onrender.com>
+- **Backend API:** <https://cbae-backend.onrender.com/api/v1>
+- **Health check:** <https://cbae-backend.onrender.com/actuator/health>
+- **Swagger UI:** <https://cbae-backend.onrender.com/swagger-ui.html>
+
+Sign in with the [demo credentials](#demo-credentials-pre-seeded) below.
+
+> **Free-plan behaviour:** the services sleep after 15 minutes without traffic, so the first
+> request after a quiet period can take a minute or more. The free database expires 30 days
+> after creation (this one was created on 17 Nov 2026), so the demo may go offline around
+> mid-December 2026 unless it is recreated. See [Free-plan limits](#️-deploy-to-render).
 
 ---
 
 ## ▶️ Run locally
 
-There is no public demo deployment at the moment. To try it, run the whole stack with Docker:
+To run the whole stack on your own machine with Docker:
 
 ```bash
 docker compose up --build
