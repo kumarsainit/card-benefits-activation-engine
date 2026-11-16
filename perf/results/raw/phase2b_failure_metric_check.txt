@@ -1,0 +1,6 @@
+k6 http_req_failed is a Rate metric: 'passes' = requests where failed==true, 'fails' = requests where failed==false.
+So passes=0, fails=N, rate=0 means 0 failed requests out of N (N = measured ingest requests + 1 login in setup).
+
+run 1: http_reqs=1001 http_req_failed rate=0 passes(failed)=0 fails(not failed)=1001 | check 'ingest 201': passes=1000 fails=0
+run 2: http_reqs=1001 http_req_failed rate=0 passes(failed)=0 fails(not failed)=1001 | check 'ingest 201': passes=1000 fails=0
+run 3: http_reqs=1001 http_req_failed rate=0 passes(failed)=0 fails(not failed)=1001 | check 'ingest 201': passes=1000 fails=0

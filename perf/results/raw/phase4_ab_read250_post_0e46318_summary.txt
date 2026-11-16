@@ -1,0 +1,4 @@
+runs: 3  files: perf/results/raw/phase4_ab_read250_post_0e46318_run1.json perf/results/raw/phase4_ab_read250_post_0e46318_run2.json perf/results/raw/phase4_ab_read250_post_0e46318_run3.json
+target |         achieved req/s |               p50 ms |                 p95 ms |                 p99 ms |          error % | dropped
+   250 |    250.0 (250.0-250.0) |        3.5 (3.5-3.5) |          8.9 (8.8-9.3) |         9.8 (9.7-14.2) | 0.00 (0.00-0.00) | [0, 0, 0]
+max sustainable stage (err<1%, p95<500ms, achieved>=99% of target, median of runs): 250 req/s

@@ -1,0 +1,10 @@
+== pre_9d769bc @250
+stage 250 get_cards          p(50) 2.8 (2.4-2.9)  p(95) 3.9 (3.6-4.0)
+stage 250 get_opportunities  p(50) 63.2 (54.9-63.8)  p(95) 74.8 (67.2-76.0)
+stage 250 get_transactions   p(50) 4.2 (3.8-4.2)  p(95) 5.7 (5.3-5.8)
+stage 250 get_claims         p(50) 2.1 (1.8-2.2)  p(95) 3.2 (3.0-3.3)
+== post_0e46318 @250
+stage 250 get_cards          p(50) 2.4 (2.4-2.5)  p(95) 3.3 (3.3-3.9)
+stage 250 get_opportunities  p(50) 8.4 (8.4-8.5)  p(95) 9.6 (9.6-11.0)
+stage 250 get_transactions   p(50) 4.0 (4.0-4.0)  p(95) 5.3 (5.2-6.3)
+stage 250 get_claims         p(50) 1.8 (1.8-1.9)  p(95) 2.7 (2.7-3.2)

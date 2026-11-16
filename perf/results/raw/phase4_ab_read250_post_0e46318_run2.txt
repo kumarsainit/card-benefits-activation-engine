@@ -1,0 +1,1 @@
+[{"stage_rps":250,"achieved_rps":250,"requests":30001,"error_rate":0,"dropped_iterations":0,"p50_ms":3.47,"p95_ms":9.253,"p99_ms":14.185,"max_ms":96.575}]

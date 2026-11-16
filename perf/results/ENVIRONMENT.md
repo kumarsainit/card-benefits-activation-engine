@@ -44,3 +44,18 @@ numbers are a ceiling for this exact setup, not for a deployed service.
 though `application.yml`, `SecurityConfig` and `render.yaml` (`healthCheckPath: /actuator/health`) all assume it.
 The resulting `NoResourceFoundException` was turned into a 500 by `GlobalExceptionHandler`. Fixed by adding the
 dependency to `backend/pom.xml` (commit in the Phase 0 commit).
+
+## Other Docker containers during runs
+
+A second, unrelated project's containers were running on the same Docker engine (`setu-local-scanner-1`
+clamav/clamav, `setu-local-mysql-1` mysql:8.4, `setu-local-redis-1` redis:8.2; idle, <6% CPU each at the time of
+`docker stats`). They were **running** during Phase 0–3, the sequential Phase 4 re-measure (`phase4_after_*`) and the
+interleaved ingest A/B (`phase4_ab_ingest_*`). They were **stopped at 2026-11-16 23:59 IST** (`docker stop`) and kept
+stopped for every later run: N+1 body/SQL evidence (`phase4_n1_*`), read A/B (`phase4_ab_read_*`,
+`phase4_ab_read250_*`), Phase 5 and Phase 6. A partial read A/B started before that time was discarded (not used).
+
+## Identical start data for each run
+
+From the read A/B onwards every run starts with `perf/scripts/prerun.sh`, which resets the isolated perf DB and saves
+its row counts (`*_pre_db_counts.json`): 2 customers, 2 cards, 4 card_benefits, 3 benefit_rules, 0 rows in every
+generated table.

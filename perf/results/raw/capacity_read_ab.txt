@@ -1,0 +1,8 @@
+read_ab_pre phase4_ab_read_pre_9d769bc_run1.json: max sustainable stage 300 req/s (achieved 300 req/s at that stage)
+read_ab_pre phase4_ab_read_pre_9d769bc_run2.json: max sustainable stage 300 req/s (achieved 300 req/s at that stage)
+read_ab_pre phase4_ab_read_pre_9d769bc_run3.json: max sustainable stage 300 req/s (achieved 300 req/s at that stage)
+read_ab_pre: median 300 req/s, min-max 300-300, runs=[300, 300, 300]
+read_ab_post phase4_ab_read_post_0e46318_run1.json: max sustainable stage 800 req/s (achieved 800 req/s at that stage)
+read_ab_post phase4_ab_read_post_0e46318_run2.json: max sustainable stage 800 req/s (achieved 800 req/s at that stage)
+read_ab_post phase4_ab_read_post_0e46318_run3.json: max sustainable stage 800 req/s (achieved 800 req/s at that stage)
+read_ab_post: median 800 req/s, min-max 800-800, runs=[800, 800, 800]

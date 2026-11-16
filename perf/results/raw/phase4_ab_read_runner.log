@@ -1,0 +1,6 @@
+00:13:00 done pre_9d769bc run 1; load avg: { 12.64 11.97 11.50 }
+00:25:14 done post_0e46318 run 1; load avg: { 16.25 12.15 11.04 }
+00:37:31 done pre_9d769bc run 2; load avg: { 14.17 12.19 10.94 }
+00:49:44 done post_0e46318 run 2; load avg: { 24.92 13.27 10.89 }
+01:02:03 done pre_9d769bc run 3; load avg: { 15.07 12.50 11.06 }
+01:14:16 done post_0e46318 run 3; load avg: { 13.06 10.26 9.64 }

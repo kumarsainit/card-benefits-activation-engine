@@ -1,0 +1,8 @@
+pre_9d769bc: 154 SQL statements in one GET /opportunities request (phase4_n1_pre_9d769bc_sql.txt)
+post_0e46318: 2 SQL statements in one GET /opportunities request (phase4_n1_post_0e46318_sql.txt)
+pre-fix breakdown: 1 customers by email (JWT auth filter), 1 benefit_opportunities by customer_id, 150 transactions by id (lazy, one per distinct transaction), 2 cards by id (lazy)
+post-fix breakdown: 1 customers by email (JWT auth filter), 1 benefit_opportunities JOIN cards JOIN transactions by customer_id
+opportunities in body: 300 300
+data arrays identical: True
+envelope identical except response 'timestamp': True | timestamps: 2026-11-16T18:29:57.878243Z 2026-11-16T18:30:08.003639Z
+full-body diff (pretty, sorted keys): phase4_n1_body.diff -- the only differing line is the envelope 'timestamp' (time the response was generated)
