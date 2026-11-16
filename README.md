@@ -6,17 +6,83 @@ The **Card Benefits Activation Engine (CBAE)** is an event-driven fintech platfo
 
 ---
 
-## 🌐 Live Demo & Public Deployment
+## ▶️ Run locally
 
-- **Public Frontend URL**: [https://cbae-frontend.onrender.com](https://cbae-frontend.onrender.com)
-- **Public Backend API**: [https://cbae-backend.onrender.com/api/v1](https://cbae-backend.onrender.com/api/v1)
-- **Swagger API Docs**: [https://cbae-backend.onrender.com/swagger-ui.html](https://cbae-backend.onrender.com/swagger-ui.html)
+There is no public demo deployment at the moment. To try it, run the whole stack with Docker:
+
+```bash
+docker compose up --build
+```
+
+The first build takes a few minutes. When the backend logs `Started CardBenefitsActivationEngineApplication`:
+
+- Frontend: <http://localhost:3000>
+- Backend API: <http://localhost:8080/api/v1> (health: <http://localhost:8080/actuator/health>)
+- Swagger UI: <http://localhost:8080/swagger-ui.html>
+
+The backend runs with the same `prod` profile and database-URL handling as the Render deployment.
+Compose also starts Kafka and Redis for local pipeline work; the app does not need them
+(`APP_KAFKA_ENABLED=false`).
 
 ### Demo Credentials (Pre-seeded)
 | Persona | Email | Password | Role / Scope |
 | :--- | :--- | :--- | :--- |
 | **Cardholder (Customer)** | `customer@example.com` | `Password123!` | Dashboard, Benefits, Claim Activation Wizard, SSE Alerts |
 | **Operations Admin** | `admin@cbae.internal` | `AdminSecure2026!` | Claims Adjudication Queue, Decisions, Value Analytics |
+
+These accounts are created by the Flyway seed migrations on first start.
+
+---
+
+## ☁️ Deploy to Render
+
+The repo includes a Render Blueprint ([`render.yaml`](render.yaml)) that creates three resources on
+Render's free plan: `cbae-postgres` (PostgreSQL), `cbae-backend` (Docker web service) and
+`cbae-frontend` (Node web service).
+
+1. Fork or push this repository to your GitHub/GitLab account.
+2. In the Render Dashboard choose **New → Blueprint**, connect the repository, and select the
+   branch. Render reads `render.yaml` from the repo root.
+3. Review the three resources and click **Deploy Blueprint**. The backend generates its own
+   `JWT_SECRET`; there are no secrets to enter.
+4. Wait for `cbae-backend` to show **Live** (its health check is `/actuator/health`; on the
+   free 0.1 CPU instance, startup takes a few minutes).
+5. **Check the public URLs.** The blueprint assumes Render gives the services the subdomains
+   `https://cbae-backend.onrender.com` and `https://cbae-frontend.onrender.com`. If the service
+   page shows a different `onrender.com` URL:
+   - on `cbae-frontend`, set `NEXT_PUBLIC_API_BASE_URL` to `https://<backend-url>/api/v1`, then
+     **Manual Deploy → Clear build cache & deploy** (the value is baked in at build time);
+   - on `cbae-backend`, set `CORS_ALLOWED_ORIGINS` to `https://<frontend-url>` (no trailing slash).
+
+   Update `render.yaml` to match, or a later Blueprint sync will reset them.
+6. Open the frontend URL and sign in with a demo account above.
+
+How the configuration works:
+
+- **Database URL.** Render Postgres exposes a `postgresql://user:password@host/db` connection
+  string, which the JDBC driver does not accept, and Blueprints cannot build strings from parts.
+  The blueprint passes it as `DATABASE_URL`, and
+  [`backend/docker-entrypoint.sh`](backend/docker-entrypoint.sh) converts it to
+  `jdbc:postgresql://host/db` at startup. User and password come from the database as
+  `SPRING_DATASOURCE_USERNAME` / `SPRING_DATASOURCE_PASSWORD`.
+- **Frontend API URL.** `NEXT_PUBLIC_API_BASE_URL` is inlined into the browser bundle at build
+  time, so it is the backend's public `https://…onrender.com/api/v1` URL.
+- **Memory.** Free instances have 512 MB. The backend image caps the JVM heap at 55% of the
+  container limit and uses SerialGC.
+
+**Free-plan limits:**
+
+- **The free PostgreSQL database expires 30 days after it is created.** Render then gives a
+  14-day grace period to upgrade before the database and its data are deleted. To keep using the
+  free plan after that, delete the database and re-sync the Blueprint (the schema and demo data
+  are recreated by Flyway on the next backend start).
+- **Free web services sleep after 15 minutes without traffic.** The next request wakes them,
+  which takes about a minute for the frontend; the backend then needs its own startup time on
+  0.1 CPU (about 2.5 minutes in local testing with a 0.1 CPU limit), so the first sign-in after
+  idle can be slow or time out once.
+
+See [`docs/deploy-verification.md`](docs/deploy-verification.md) for what has been verified
+locally, and what has not.
 
 ---
 
@@ -100,17 +166,20 @@ flowchart TB
 
 ---
 
-## ⚡ Local Setup & Execution
+## ⚡ Local Development (hot reload)
+
+To work on the code instead of running the containers from [Run locally](#️-run-locally),
+start only the infrastructure in Docker and run the apps on the host.
 
 ### 1. Prerequisites
 - **Java 21 LTS** (`JAVA_HOME` pointing to JDK 21)
-- **Node.js 20+**
+- **Node.js 22** (20+ works)
 - **Docker & Docker Compose**
 - **Maven 3.9+**
 
 ### 2. Start Infrastructure
 ```bash
-docker compose up -d
+docker compose up -d postgres kafka redis
 ```
 
 ### 3. Start Backend

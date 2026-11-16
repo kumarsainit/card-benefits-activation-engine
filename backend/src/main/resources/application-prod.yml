@@ -1,0 +1,32 @@
+# Production profile (SPRING_PROFILES_ACTIVE=prod). Overrides application.yml.
+#
+# Datasource: no localhost fallback - fail fast if the platform did not provide one.
+# SPRING_DATASOURCE_URL must be a JDBC URL. On Render it is derived from the
+# database's connectionString by backend/docker-entrypoint.sh (DATABASE_URL ->
+# jdbc:postgresql://...), and the credentials come from SPRING_DATASOURCE_USERNAME /
+# SPRING_DATASOURCE_PASSWORD.
+
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    hikari:
+      # Free Postgres + a 512 MB instance: a small pool is plenty for a demo.
+      maximum-pool-size: 5
+      minimum-idle: 1
+
+server:
+  tomcat:
+    threads:
+      max: 50
+      min-spare: 4
+
+management:
+  endpoint:
+    health:
+      show-details: never
+
+logging:
+  level:
+    com.cbae.engine: INFO

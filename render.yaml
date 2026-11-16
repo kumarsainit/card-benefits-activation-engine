@@ -1,5 +1,10 @@
-# Render Infrastructure Blueprint for Card Benefits Activation Engine
-version: "1"
+# Render Blueprint for the Card Benefits Activation Engine.
+# Spec: https://render.com/docs/blueprint-spec
+#
+# Public URLs below assume Render gives the services their requested names as
+# onrender.com subdomains (cbae-backend / cbae-frontend). If Render assigns a
+# different subdomain, update NEXT_PUBLIC_API_BASE_URL and CORS_ALLOWED_ORIGINS
+# (see README "Deploy to Render") and redeploy both services.
 
 databases:
   - name: cbae-postgres
@@ -7,10 +12,12 @@ databases:
     user: card_user
     plan: free
     region: oregon
+    # Empty list = no external (public internet) access. The backend connects
+    # over Render's private network using the internal connection string.
     ipAllowList: []
 
 services:
-  # Spring Boot Java 21 Backend Service
+  # Spring Boot (Java 21) backend, built from backend/Dockerfile
   - type: web
     name: cbae-backend
     runtime: docker
@@ -22,12 +29,24 @@ services:
     envVars:
       - key: SPRING_PROFILES_ACTIVE
         value: prod
-      - key: SPRING_DATASOURCE_URL
+      # Render Postgres exposes only connectionString/user/password/database and
+      # Blueprints cannot interpolate, so the libpq URL is passed as DATABASE_URL
+      # and backend/docker-entrypoint.sh converts it to a JDBC URL at startup.
+      - key: DATABASE_URL
         fromDatabase:
           name: cbae-postgres
           property: connectionString
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase:
+          name: cbae-postgres
+          property: user
+      - key: SPRING_DATASOURCE_PASSWORD
+        fromDatabase:
+          name: cbae-postgres
+          property: password
+      # Must match the frontend's public URL exactly (scheme + host, no trailing slash).
       - key: CORS_ALLOWED_ORIGINS
-        value: "http://localhost:3000,https://cbae-frontend.onrender.com,https://card-benefits-activation-engine.vercel.app"
+        value: https://cbae-frontend.onrender.com
       - key: JWT_SECRET
         generateValue: true
       - key: JWT_EXPIRATION_MS
@@ -37,21 +56,23 @@ services:
       - key: APP_KAFKA_ENABLED
         value: "false"
 
-  # Next.js 14 Frontend Service
+  # Next.js 14 frontend
   - type: web
     name: cbae-frontend
     runtime: node
     rootDir: frontend
+    # Do NOT set NODE_ENV here: Blueprint env vars are also present at build time,
+    # and NODE_ENV=production makes `npm install` skip devDependencies (typescript),
+    # which breaks `next build`. Render sets NODE_ENV=production at runtime itself.
     buildCommand: npm install && npm run build
+    # `next start` listens on $PORT (Render default 10000).
     startCommand: npm start
     plan: free
     region: oregon
     envVars:
+      - key: NODE_VERSION
+        value: "22"
+      # Inlined into the browser bundle at build time, so it must be the backend's
+      # PUBLIC https URL. (fromService `host` is the private-network hostname.)
       - key: NEXT_PUBLIC_API_BASE_URL
-        fromService:
-          type: web
-          name: cbae-backend
-          property: host
-          value: https://cbae-backend.onrender.com/api/v1
-      - key: NODE_ENV
-        value: production
+        value: https://cbae-backend.onrender.com/api/v1

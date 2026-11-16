@@ -1,18 +1,24 @@
 # Multi-Stage Build for Next.js Frontend
-FROM node:20-alpine AS deps
+# Node 22 matches NODE_VERSION in render.yaml (Node 20 is past end-of-life).
+FROM node:22-alpine AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
 
-FROM node:20-alpine AS builder
+FROM node:22-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+# NEXT_PUBLIC_* values are inlined into the browser bundle at build time, so the
+# API URL the browser should call must be passed as a build arg.
+ARG NEXT_PUBLIC_API_BASE_URL
+ENV NEXT_PUBLIC_API_BASE_URL=${NEXT_PUBLIC_API_BASE_URL}
 ENV NEXT_TELEMETRY_DISABLED=1
-RUN npm run build
+# The app has no public/ directory yet; create it so the runner's COPY succeeds.
+RUN mkdir -p public && npm run build
 
-FROM node:20-alpine AS runner
+FROM node:22-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=3000
