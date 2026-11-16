@@ -1,0 +1,52 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: perf/k6/claim_retry.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 1 max VUs, 10m30s max duration (incl. graceful stop):
+              * r: 100 iterations shared among 1 VUs (maxDuration: 10m0s, gracefulStop: 30s)
+
+time="2026-11-17T02:02:06+05:30" level=info msg="wizard_keys first: 201 {\"success\":true,\"message\":\"Claim submitted successfully\",\"data\":{\"id\":\"f88f0ed0-11d0-41cc-b2f4-a1ccdc7555f4\",\"claimReferenceNumber\":\"CLM-2026-6DEB14\",\"opportunityId\":\"075cfb55-1f5e-4b36-8127-c03599194" source=console
+time="2026-11-17T02:02:06+05:30" level=info msg="wizard_keys retry: 201 {\"success\":true,\"message\":\"Claim submitted successfully\",\"data\":{\"id\":\"2d56ca72-86be-41a8-9014-591d80f9a6b9\",\"claimReferenceNumber\":\"CLM-2026-D162F6\",\"opportunityId\":\"075cfb55-1f5e-4b36-8127-c03599194" source=console
+time="2026-11-17T02:02:06+05:30" level=info msg="stable_key first: 201 {\"success\":true,\"message\":\"Claim submitted successfully\",\"data\":{\"id\":\"c3bccb1f-c57c-46a9-b0a8-3493cc04612d\",\"claimReferenceNumber\":\"CLM-2026-0A2893\",\"opportunityId\":\"915d8cb8-0e33-44e5-b0de-ac840a5f9" source=console
+time="2026-11-17T02:02:06+05:30" level=info msg="stable_key retry: 201 {\"success\":true,\"message\":\"Claim submitted successfully\",\"data\":{\"id\":\"c3bccb1f-c57c-46a9-b0a8-3493cc04612d\",\"claimReferenceNumber\":\"CLM-2026-0A2893\",\"opportunityId\":\"915d8cb8-0e33-44e5-b0de-ac840a5f9" source=console
+
+running (00m01.0s), 1/1 VUs, 4 complete and 0 interrupted iterations
+r      [   4% ] 1 VUs  00m00.6s/10m0s  004/100 shared iters
+
+running (00m02.0s), 1/1 VUs, 14 complete and 0 interrupted iterations
+r      [  14% ] 1 VUs  00m01.6s/10m0s  014/100 shared iters
+
+running (00m03.0s), 1/1 VUs, 26 complete and 0 interrupted iterations
+r      [  26% ] 1 VUs  00m02.6s/10m0s  026/100 shared iters
+
+running (00m04.0s), 1/1 VUs, 37 complete and 0 interrupted iterations
+r      [  37% ] 1 VUs  00m03.6s/10m0s  037/100 shared iters
+
+running (00m05.0s), 1/1 VUs, 50 complete and 0 interrupted iterations
+r      [  50% ] 1 VUs  00m04.6s/10m0s  050/100 shared iters
+
+running (00m06.0s), 1/1 VUs, 63 complete and 0 interrupted iterations
+r      [  63% ] 1 VUs  00m05.6s/10m0s  063/100 shared iters
+
+running (00m07.0s), 1/1 VUs, 76 complete and 0 interrupted iterations
+r      [  76% ] 1 VUs  00m06.6s/10m0s  076/100 shared iters
+
+running (00m08.0s), 1/1 VUs, 89 complete and 0 interrupted iterations
+r      [  89% ] 1 VUs  00m07.6s/10m0s  089/100 shared iters
+{
+ "retry_submit_status{group:wizard_keys,attempt:first,code:201}": 50,
+ "retry_submit_status{group:stable_key,attempt:first,code:201}": 50,
+ "retry_submit_status{group:stable_key,attempt:retry,code:201}": 50,
+ "retry_submit_status{group:wizard_keys,attempt:retry,code:201}": 50
+}
+
+running (00m08.8s), 0/1 VUs, 100 complete and 0 interrupted iterations
+r    ✓ [ 100% ] 1 VUs  00m08.4s/10m0s  100/100 shared iters

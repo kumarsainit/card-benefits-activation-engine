@@ -1,0 +1,8 @@
+{
+ "status_counts": {
+  "retry_submit_status{group:stable_key,attempt:first,code:201}": 50,
+  "retry_submit_status{group:wizard_keys,attempt:retry,code:201}": 50,
+  "retry_submit_status{group:stable_key,attempt:retry,code:201}": 50,
+  "retry_submit_status{group:wizard_keys,attempt:first,code:201}": 50
+ }
+}
