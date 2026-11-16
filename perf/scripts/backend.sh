@@ -3,7 +3,7 @@
 # Usage: perf/scripts/backend.sh start [extra JVM/Spring args...] | stop | wait
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
-JAR="$ROOT/backend/target/card-benefits-activation-engine-1.0.0-SNAPSHOT.jar"
+JAR="${BACKEND_JAR:-$ROOT/backend/target/card-benefits-activation-engine-1.0.0-SNAPSHOT.jar}"
 PIDFILE="$ROOT/perf/.backend.pid"
 LOG="${BACKEND_LOG:-$ROOT/perf/.backend.log}"
 export JAVA_HOME="${JAVA_HOME:-$(/usr/libexec/java_home -v 21)}"

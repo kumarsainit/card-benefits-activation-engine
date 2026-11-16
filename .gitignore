@@ -79,3 +79,4 @@ redis-data/
 perf/.backend.pid
 perf/.backend.log
 perf/.backend*.log
+perf/.ab/

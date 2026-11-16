@@ -1,0 +1,15 @@
+                                                         QUERY PLAN                                                         
+----------------------------------------------------------------------------------------------------------------------------
+ Sort  (cost=54.34..55.10 rows=304 width=919) (actual time=0.334..0.353 rows=300 loops=1)
+   Sort Key: created_at DESC
+   Sort Method: quicksort  Memory: 303kB
+   Buffers: shared hit=41
+   ->  Seq Scan on benefit_opportunities  (cost=0.00..41.80 rows=304 width=919) (actual time=0.008..0.113 rows=300 loops=1)
+         Filter: (customer_id = '11111111-1111-1111-1111-111111111111'::uuid)
+         Buffers: shared hit=38
+ Planning:
+   Buffers: shared hit=201
+ Planning Time: 1.108 ms
+ Execution Time: 0.455 ms
+(11 rows)
+

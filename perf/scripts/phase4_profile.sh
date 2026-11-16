@@ -25,6 +25,7 @@ for ep in cards opportunities transactions claims; do
   rows=$(echo "$body" | python3 -c 'import sys,json;s=sys.stdin.read();print(len(json.loads(s[:s.rfind(" HTTP")])["data"]))' 2>/dev/null || echo '?')
   echo "GET /api/v1/$ep rows=$rows sql_statements=$((after-before)) ${body##* HTTP}" | tee -a "$OUT"
 done
+curl -s -o /dev/null localhost:8080/api/v1/opportunities -H "Authorization: Bearer $TOKEN"; sleep 0.5  # last request in the log
 python3 perf/scripts/sql_shapes.py "$LOG" >> "$OUT"
 
 docker exec cbae-postgres psql -U card_user -d card_benefits_perf -c "
@@ -66,7 +67,7 @@ for f in sys.argv[1:]:
             if 'HikariPool.getConnection' in fr or 'ConcurrentBag.borrow' in fr: key='waiting for Hikari connection'; break
             if 'SocketDispatcher.read' in fr or 'PgStream' in fr or 'NioSocketImpl.read' in fr: key='in Postgres I/O (query)'; break
             if 'com.fasterxml.jackson' in fr: key='Jackson (JSON)'; break
-            if 'NioEndpoint' in fr or 'TaskQueue.take' in fr: key='idle (waiting for request)'; break
+            if 'NioEndpoint' in fr or 'TaskQueue.take' in fr or 'TaskQueue.poll' in fr: key='idle (waiting for request)'; break
         c[f"{key} [{st.group(1) if st else '?'}]"]+=1
     print(f, dict(c.most_common()))
 PY

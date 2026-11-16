@@ -1,0 +1,18 @@
+perf db reset
+backend UP after 7s (pid 20914)
+21:55:42 done phase4_after ingest run 1
+perf db reset
+backend UP after 7s (pid 21590)
+22:05:34 done phase4_after ingest run 2
+perf db reset
+backend UP after 7s (pid 21931)
+22:15:26 done phase4_after ingest run 3
+perf db reset
+backend UP after 6s (pid 22199)
+22:27:40 done phase4_after read run 1
+perf db reset
+backend UP after 7s (pid 22592)
+22:39:56 done phase4_after read run 2
+perf db reset
+backend UP after 6s (pid 22946)
+22:52:09 done phase4_after read run 3

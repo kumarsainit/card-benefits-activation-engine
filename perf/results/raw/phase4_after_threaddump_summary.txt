@@ -1,0 +1,3 @@
+perf/results/raw/phase4_after_threaddump_1.txt {'idle (waiting for request) [TIMED_WAITING]': 15, 'in Postgres I/O (query) [RUNNABLE]': 2}
+perf/results/raw/phase4_after_threaddump_2.txt {'idle (waiting for request) [TIMED_WAITING]': 14, 'idle (waiting for request) [RUNNABLE]': 2, 'in Postgres I/O (query) [RUNNABLE]': 1}
+perf/results/raw/phase4_after_threaddump_3.txt {'idle (waiting for request) [TIMED_WAITING]': 15, 'idle (waiting for request) [RUNNABLE]': 1, 'in Postgres I/O (query) [RUNNABLE]': 1}

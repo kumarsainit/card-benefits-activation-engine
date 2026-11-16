@@ -1,0 +1,31 @@
+t+45s
+  hikaricp.connections.active 2.0
+  hikaricp.connections.pending 0.0
+  hikaricp.connections.max 10.0
+  tomcat.threads.busy n/a
+t+50s
+  hikaricp.connections.active 1.0
+  hikaricp.connections.pending 0.0
+  hikaricp.connections.max 10.0
+  tomcat.threads.busy n/a
+t+55s
+  hikaricp.connections.active 1.0
+  hikaricp.connections.pending 0.0
+  hikaricp.connections.max 10.0
+  tomcat.threads.busy n/a
+t+60s
+  hikaricp.connections.active 0.0
+  hikaricp.connections.pending 0.0
+  hikaricp.connections.max 10.0
+  tomcat.threads.busy n/a
+t+65s
+  hikaricp.connections.active 2.0
+  hikaricp.connections.pending 0.0
+  hikaricp.connections.max 10.0
+  tomcat.threads.busy n/a
+t+70s
+  hikaricp.connections.active 3.0
+  hikaricp.connections.pending 0.0
+  hikaricp.connections.max 10.0
+  tomcat.threads.busy n/a
+{"name":"hikaricp.connections.acquire","description":"Connection acquire time","baseUnit":"seconds","measurements":[{"statistic":"COUNT","value":34124.0},{"statistic":"TOTAL_TIME","value":0.854},{"statistic":"MAX","value":0.026}],"availableTags":[{"tag":"pool","values":["HikariPool-1"]}]}
