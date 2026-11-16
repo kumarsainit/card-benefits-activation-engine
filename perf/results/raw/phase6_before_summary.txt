@@ -1,0 +1,14 @@
+runs: ['perf/results/raw/phase6_before_run1.json', 'perf/results/raw/phase6_before_run2.json', 'perf/results/raw/phase6_before_run3.json']
+wf_1_ingest_ms                   p(50)  median=   18.00 min=   17.64 max=   18.48
+wf_1_ingest_ms                   p(95)  median=   23.53 min=   23.01 max=   23.74
+wf_2_list_opportunities_ms       p(50)  median=    9.66 min=    9.56 max=    9.91
+wf_2_list_opportunities_ms       p(95)  median=   12.42 min=   12.19 max=   12.63
+wf_3_opportunity_detail_ms       p(50)  median=    7.83 min=    7.43 max=    7.86
+wf_3_opportunity_detail_ms       p(95)  median=   10.08 min=    9.23 max=   10.23
+wf_4_submit_claim_ms             p(50)  median=    3.59 min=    3.54 max=    3.64
+wf_4_submit_claim_ms             p(95)  median=    4.94 min=    4.72 max=    5.02
+wf_total_ms                      p(50)  median=   39.47 min=   38.69 max=   39.63
+wf_total_ms                      p(95)  median=   47.90 min=   46.89 max=   48.06
+wf_claim_created [0, 0, 0]
+wf_claim_failed [99, 99, 99]
+fields prefilled from opportunity (avg per run): [3, 3, 3] of 7

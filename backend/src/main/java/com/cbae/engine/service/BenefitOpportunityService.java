@@ -97,6 +97,7 @@ public class BenefitOpportunityService {
                 .transactionAmount(opp.getTransaction().getAmount())
                 .merchantName(opp.getTransaction().getMerchantName())
                 .transactionTimestamp(opp.getTransaction().getTransactionTimestamp())
+                .benefitId(opp.getBenefit().getId())
                 .benefitType(opp.getBenefitType())
                 .benefitName(formatBenefitName(opp.getBenefitType()))
                 .potentialClaimAmount(opp.getPotentialClaimAmount())

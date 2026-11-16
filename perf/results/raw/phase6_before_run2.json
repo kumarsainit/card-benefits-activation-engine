@@ -1,0 +1,404 @@
+{
+ "workflow": {
+  "wf_1_ingest_ms": {
+   "p(99)": 24.889739999999996,
+   "max": 29.336,
+   "avg": 17.998898989898997,
+   "count": 99,
+   "min": 11.443,
+   "med": 17.645,
+   "p(50)": 17.645,
+   "p(95)": 23.532799999999998
+  },
+  "wf_2_list_opportunities_ms": {
+   "p(50)": 9.907,
+   "p(95)": 12.4177,
+   "p(99)": 15.371759999999997,
+   "max": 18.349,
+   "avg": 10.042323232323234,
+   "count": 99,
+   "min": 7.883,
+   "med": 9.907
+  },
+  "wf_3_opportunity_detail_ms": {
+   "med": 7.825,
+   "p(50)": 7.825,
+   "p(95)": 10.0848,
+   "p(99)": 10.347999999999997,
+   "max": 14.905,
+   "avg": 7.770787878787885,
+   "count": 99,
+   "min": 5.029
+  },
+  "wf_4_submit_claim_ms": {
+   "max": 7.003,
+   "avg": 3.75758585858586,
+   "count": 99,
+   "min": 2.606,
+   "med": 3.587,
+   "p(50)": 3.587,
+   "p(95)": 5.0222999999999995,
+   "p(99)": 6.2405599999999986
+  },
+  "wf_total_ms": {
+   "p(99)": 52.26899999999999,
+   "max": 54.915000000000006,
+   "avg": 39.56959595959596,
+   "count": 99,
+   "min": 29.094,
+   "med": 39.469,
+   "p(50)": 39.469,
+   "p(95)": 48.0564
+  },
+  "wf_claim_created": null,
+  "wf_claim_failed": {
+   "count": 99,
+   "rate": 23.398801130516624
+  },
+  "wf_fields_prefilled_from_opportunity": {
+   "p(99)": 3,
+   "max": 3,
+   "avg": 3,
+   "count": 99,
+   "min": 3,
+   "med": 3,
+   "p(50)": 3,
+   "p(95)": 3
+  },
+  "claim_fields_total": 7
+ },
+ "k6": {
+  "root_group": {
+   "name": "",
+   "path": "",
+   "id": "d41d8cd98f00b204e9800998ecf8427e",
+   "groups": [],
+   "checks": [
+    {
+     "name": "opportunity detected",
+     "path": "::opportunity detected",
+     "id": "1fed0824973c2c500ca7bc1907040da9",
+     "passes": 99,
+     "fails": 0
+    },
+    {
+     "name": "claim 201",
+     "path": "::claim 201",
+     "id": "ddcb3d4db459d83e74f377e8cece7aea",
+     "passes": 0,
+     "fails": 99
+    }
+   ]
+  },
+  "options": {
+   "summaryTrendStats": [
+    "min",
+    "med",
+    "p(50)",
+    "p(95)",
+    "p(99)",
+    "max",
+    "avg",
+    "count"
+   ],
+   "summaryTimeUnit": "",
+   "noColor": false
+  },
+  "state": {
+   "isStdErrTTY": false,
+   "testRunDurationMs": 4230.986,
+   "isStdOutTTY": false
+  },
+  "metrics": {
+   "data_sent": {
+    "values": {
+     "rate": 59584.21984851758,
+     "count": 252100
+    },
+    "type": "counter",
+    "contains": "data"
+   },
+   "data_received": {
+    "type": "counter",
+    "contains": "data",
+    "values": {
+     "count": 22969993,
+     "rate": 5428992.910872312
+    }
+   },
+   "vus_max": {
+    "type": "gauge",
+    "contains": "default",
+    "values": {
+     "min": 1,
+     "max": 1,
+     "value": 1
+    }
+   },
+   "wf_2_list_opportunities_ms": {
+    "contains": "time",
+    "values": {
+     "p(95)": 12.4177,
+     "p(99)": 15.371759999999997,
+     "max": 18.349,
+     "avg": 10.042323232323234,
+     "count": 99,
+     "min": 7.883,
+     "med": 9.907,
+     "p(50)": 9.907
+    },
+    "type": "trend"
+   },
+   "http_req_blocked": {
+    "type": "trend",
+    "contains": "time",
+    "values": {
+     "p(99)": 0.27604,
+     "max": 1.385,
+     "avg": 0.0665314861460957,
+     "count": 397,
+     "min": 0.001,
+     "med": 0.003,
+     "p(50)": 0.003,
+     "p(95)": 0.259
+    }
+   },
+   "http_req_failed": {
+    "type": "rate",
+    "contains": "default",
+    "values": {
+     "rate": 0.24937027707808565,
+     "passes": 99,
+     "fails": 298
+    }
+   },
+   "http_req_sending": {
+    "values": {
+     "p(50)": 0.014,
+     "p(95)": 0.033199999999999986,
+     "p(99)": 0.08539999999999998,
+     "max": 0.121,
+     "avg": 0.017672544080604494,
+     "count": 397,
+     "min": 0.008,
+     "med": 0.014
+    },
+    "type": "trend",
+    "contains": "time"
+   },
+   "http_reqs": {
+    "type": "counter",
+    "contains": "default",
+    "values": {
+     "count": 397,
+     "rate": 93.83155604863737
+    }
+   },
+   "checks": {
+    "type": "rate",
+    "contains": "default",
+    "values": {
+     "rate": 0.5,
+     "passes": 99,
+     "fails": 99
+    }
+   },
+   "vus": {
+    "type": "gauge",
+    "contains": "default",
+    "values": {
+     "min": 1,
+     "max": 1,
+     "value": 1
+    }
+   },
+   "wf_claim_failed": {
+    "type": "counter",
+    "contains": "default",
+    "values": {
+     "count": 99,
+     "rate": 23.398801130516624
+    }
+   },
+   "wf_total_ms": {
+    "type": "trend",
+    "contains": "time",
+    "values": {
+     "p(99)": 52.26899999999999,
+     "max": 54.915000000000006,
+     "avg": 39.56959595959596,
+     "count": 99,
+     "min": 29.094,
+     "med": 39.469,
+     "p(50)": 39.469,
+     "p(95)": 48.0564
+    }
+   },
+   "http_req_connecting": {
+    "type": "trend",
+    "contains": "time",
+    "values": {
+     "p(99)": 0.23116,
+     "max": 0.262,
+     "avg": 0.0508942065491184,
+     "count": 397,
+     "min": 0,
+     "med": 0,
+     "p(50)": 0,
+     "p(95)": 0.214
+    }
+   },
+   "http_req_receiving": {
+    "type": "trend",
+    "contains": "time",
+    "values": {
+     "p(99)": 1.40604,
+     "max": 3.725,
+     "avg": 0.4408790931989925,
+     "count": 397,
+     "min": 0.081,
+     "med": 0.24,
+     "p(50)": 0.24,
+     "p(95)": 1.2821999999999998
+    }
+   },
+   "iteration_duration": {
+    "values": {
+     "avg": 41.83483961616162,
+     "count": 99,
+     "min": 31.464,
+     "med": 42.150459,
+     "p(50)": 42.150459,
+     "p(95)": 49.843820799999996,
+     "p(99)": 53.672912999999994,
+     "max": 56.812833
+    },
+    "type": "trend",
+    "contains": "time"
+   },
+   "iterations": {
+    "type": "counter",
+    "contains": "default",
+    "values": {
+     "count": 99,
+     "rate": 23.398801130516624
+    }
+   },
+   "http_req_duration": {
+    "type": "trend",
+    "contains": "time",
+    "values": {
+     "avg": 10.084934508816117,
+     "count": 397,
+     "min": 2.606,
+     "med": 8.788,
+     "p(50)": 8.788,
+     "p(95)": 21.073399999999996,
+     "p(99)": 24.501279999999998,
+     "max": 86.329
+    }
+   },
+   "http_req_duration{expected_response:true}": {
+    "type": "trend",
+    "contains": "time",
+    "values": {
+     "p(50)": 10.142,
+     "p(95)": 22.14295,
+     "p(99)": 24.63313,
+     "max": 86.329,
+     "avg": 12.186973154362414,
+     "count": 298,
+     "min": 5.029,
+     "med": 10.142
+    }
+   },
+   "http_req_tls_handshaking": {
+    "values": {
+     "count": 397,
+     "min": 0,
+     "med": 0,
+     "p(50)": 0,
+     "p(95)": 0,
+     "p(99)": 0,
+     "max": 0,
+     "avg": 0
+    },
+    "type": "trend",
+    "contains": "time"
+   },
+   "wf_fields_prefilled_from_opportunity": {
+    "contains": "default",
+    "values": {
+     "p(99)": 3,
+     "max": 3,
+     "avg": 3,
+     "count": 99,
+     "min": 3,
+     "med": 3,
+     "p(50)": 3,
+     "p(95)": 3
+    },
+    "type": "trend"
+   },
+   "wf_3_opportunity_detail_ms": {
+    "values": {
+     "avg": 7.770787878787885,
+     "count": 99,
+     "min": 5.029,
+     "med": 7.825,
+     "p(50)": 7.825,
+     "p(95)": 10.0848,
+     "p(99)": 10.347999999999997,
+     "max": 14.905
+    },
+    "type": "trend",
+    "contains": "time"
+   },
+   "wf_4_submit_claim_ms": {
+    "contains": "time",
+    "values": {
+     "p(99)": 6.2405599999999986,
+     "max": 7.003,
+     "avg": 3.75758585858586,
+     "count": 99,
+     "min": 2.606,
+     "med": 3.587,
+     "p(50)": 3.587,
+     "p(95)": 5.0222999999999995
+    },
+    "type": "trend"
+   },
+   "wf_1_ingest_ms": {
+    "type": "trend",
+    "contains": "time",
+    "values": {
+     "avg": 17.998898989898997,
+     "count": 99,
+     "min": 11.443,
+     "med": 17.645,
+     "p(50)": 17.645,
+     "p(95)": 23.532799999999998,
+     "p(99)": 24.889739999999996,
+     "max": 29.336
+    }
+   },
+   "http_req_waiting": {
+    "type": "trend",
+    "contains": "time",
+    "values": {
+     "p(50)": 8.014,
+     "p(95)": 20.7736,
+     "p(99)": 24.157159999999998,
+     "max": 85.92,
+     "avg": 9.626382871536524,
+     "count": 397,
+     "min": 2.452,
+     "med": 8.014
+    }
+   }
+  },
+  "setup_data": {
+   "token": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9DVVNUT01FUiIsImZ1bGxOYW1lIjoiQWxleCBDYXJ0ZXIiLCJ1c2VySWQiOiIxMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJzdWIiOiJjdXN0b21lckBleGFtcGxlLmNvbSIsImlhdCI6MTc5NDg2MDgzMCwiZXhwIjoxNzk0OTQ3MjMwfQ.6vHiKspEVXBXi2MsIb7pii4EmQGHXj3Cn4owMhb92Ts"
+  }
+ }
+}

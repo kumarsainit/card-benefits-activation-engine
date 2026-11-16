@@ -29,6 +29,7 @@ public class BenefitOpportunityDto {
     private BigDecimal transactionAmount;
     private String merchantName;
     private Instant transactionTimestamp;
+    private UUID benefitId; // card_benefits.id; the claim wizard sends it as cardBenefitId
     private BenefitType benefitType;
     private String benefitName;
     private BigDecimal potentialClaimAmount;
