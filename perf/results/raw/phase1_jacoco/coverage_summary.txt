@@ -1,0 +1,5 @@
+INSTRUCTION: covered 4599 / 5641 = 81.5%
+BRANCH: covered 158 / 301 = 52.5%
+LINE: covered 1105 / 1321 = 83.6%
+METHOD: covered 146 / 193 = 75.6%
+CLASS: covered 48 / 49 = 98.0%

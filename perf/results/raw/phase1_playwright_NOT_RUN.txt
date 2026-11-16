@@ -1,0 +1,4 @@
+Playwright e2e (frontend/__tests__/e2e/smoke.spec.ts) was NOT run in Phase 1.
+Reason: Playwright 1.62.1 browser binaries are not installed (~/Library/Caches/ms-playwright does not exist).
+Per the ground rules, the install command was reported to the user instead of being run:
+    cd frontend && npx playwright install chromium

@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.cbae.engine.repository.RepositoryIntegrationTest" time="0.407" tests="3" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="21"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/thekumarsai/Developer/card-benefits-activation-engine/backend/target/test-classes:/Users/thekumarsai/Developer/card-benefits-activation-engine/backend/target/classes:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-starter-web/3.3.4/spring-boot-starter-web-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-starter/3.3.4/spring-boot-starter-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot/3.3.4/spring-boot-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/3.3.4/spring-boot-autoconfigure-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-starter-logging/3.3.4/spring-boot-starter-logging-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.23.1/log4j-to-slf4j-2.23.1.jar:/Users/thekumarsai/.m2/repository/org/apache/logging/log4j/log4j-api/2.23.1/log4j-api-2.23.1.jar:/Users/thekumarsai/.m2/repository/org/slf4j/jul-to-slf4j/2.0.16/jul-to-slf4j-2.0.16.jar:/Users/thekumarsai/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/Users/thekumarsai/.m2/repository/org/yaml/snakeyaml/2.2/snakeyaml-2.2.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-starter-json/3.3.4/spring-boot-starter-json-3.3.4.jar:/Users/thekumarsai/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.17.2/jackson-datatype-jdk8-2.17.2.jar:/Users/thekumarsai/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.17.2/jackson-module-parameter-names-2.17.2.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/3.3.4/spring-boot-starter-tomcat-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/10.1.30/tomcat-embed-core-10.1.30.jar:/Users/thekumarsai/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.30/tomcat-embed-websocket-10.1.30.jar:/Users/thekumarsai/.m2/repository/org/springframework/spring-web/6.1.13/spring-web-6.1.13.jar:/Users/thekumarsai/.m2/repository/org/springframework/spring-beans/6.1.13/spring-beans-6.1.13.jar:/Users/thekumarsai/.m2/repository/org/springframework/spring-webmvc/6.1.13/spring-webmvc-6.1.13.jar:/Users/thekumarsai/.m2/repository/org/springframework/spring-expression/6.1.13/spring-expression-6.1.13.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-starter-data-jpa/3.3.4/spring-boot-starter-data-jpa-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-starter-aop/3.3.4/spring-boot-starter-aop-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/aspectj/aspectjweaver/1.9.22.1/aspectjweaver-1.9.22.1.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/3.3.4/spring-boot-starter-jdbc-3.3.4.jar:/Users/thekumarsai/.m2/repository/com/zaxxer/HikariCP/5.1.0/HikariCP-5.1.0.jar:/Users/thekumarsai/.m2/repository/org/springframework/spring-jdbc/6.1.13/spring-jdbc-6.1.13.jar:/Users/thekumarsai/.m2/repository/org/hibernate/orm/hibernate-core/6.5.3.Final/hibernate-core-6.5.3.Final.jar:/Users/thekumarsai/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.1.0/jakarta.persistence-api-3.1.0.jar:/Users/thekumarsai/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/Users/thekumarsai/.m2/repository/org/jboss/logging/jboss-logging/3.5.3.Final/jboss-logging-3.5.3.Final.jar:/Users/thekumarsai/.m2/repository/org/hibernate/common/hibernate-commons-annotations/6.0.6.Final/hibernate-commons-annotations-6.0.6.Final.jar:/Users/thekumarsai/.m2/repository/io/smallrye/jandex/3.1.2/jandex-3.1.2.jar:/Users/thekumarsai/.m2/repository/com/fasterxml/classmate/1.7.0/classmate-1.7.0.jar:/Users/thekumarsai/.m2/repository/net/bytebuddy/byte-buddy/1.14.19/byte-buddy-1.14.19.jar:/Users/thekumarsai/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.5/jaxb-runtime-4.0.5.jar:/Users/thekumarsai/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.5/jaxb-core-4.0.5.jar:/Users/thekumarsai/.m2/repository/org/eclipse/angus/angus-activation/2.0.2/angus-activation-2.0.2.jar:/Users/thekumarsai/.m2/repository/org/glassfish/jaxb/txw2/4.0.5/txw2-4.0.5.jar:/Users/thekumarsai/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar:/Users/thekumarsai/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/Users/thekumarsai/.m2/repository/org/antlr/antlr4-runtime/4.13.0/antlr4-runtime-4.13.0.jar:/Users/thekumarsai/.m2/repository/org/springframework/data/spring-data-jpa/3.3.4/spring-data-jpa-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/springframework/data/spring-data-commons/3.3.4/spring-data-commons-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/springframework/spring-orm/6.1.13/spring-orm-6.1.13.jar:/Users/thekumarsai/.m2/repository/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16.jar:/Users/thekumarsai/.m2/repository/org/springframework/spring-aspects/6.1.13/spring-aspects-6.1.13.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-starter-validation/3.3.4/spring-boot-starter-validation-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/10.1.30/tomcat-embed-el-10.1.30.jar:/Users/thekumarsai/.m2/repository/org/hibernate/validator/hibernate-validator/8.0.1.Final/hibernate-validator-8.0.1.Final.jar:/Users/thekumarsai/.m2/repository/jakarta/validation/jakarta.validation-api/3.0.2/jakarta.validation-api-3.0.2.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-starter-security/3.3.4/spring-boot-starter-security-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/springframework/spring-aop/6.1.13/spring-aop-6.1.13.jar:/Users/thekumarsai/.m2/repository/org/springframework/security/spring-security-config/6.3.3/spring-security-config-6.3.3.jar:/Users/thekumarsai/.m2/repository/org/springframework/security/spring-security-web/6.3.3/spring-security-web-6.3.3.jar:/Users/thekumarsai/.m2/repository/org/springframework/kafka/spring-kafka/3.2.4/spring-kafka-3.2.4.jar:/Users/thekumarsai/.m2/repository/org/springframework/spring-context/6.1.13/spring-context-6.1.13.jar:/Users/thekumarsai/.m2/repository/org/springframework/spring-messaging/6.1.13/spring-messaging-6.1.13.jar:/Users/thekumarsai/.m2/repository/org/springframework/spring-tx/6.1.13/spring-tx-6.1.13.jar:/Users/thekumarsai/.m2/repository/org/springframework/retry/spring-retry/2.0.9/spring-retry-2.0.9.jar:/Users/thekumarsai/.m2/repository/org/apache/kafka/kafka-clients/3.7.1/kafka-clients-3.7.1.jar:/Users/thekumarsai/.m2/repository/com/github/luben/zstd-jni/1.5.6-3/zstd-jni-1.5.6-3.jar:/Users/thekumarsai/.m2/repository/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.jar:/Users/thekumarsai/.m2/repository/org/xerial/snappy/snappy-java/1.1.10.5/snappy-java-1.1.10.5.jar:/Users/thekumarsai/.m2/repository/io/micrometer/micrometer-observation/1.13.4/micrometer-observation-1.13.4.jar:/Users/thekumarsai/.m2/repository/io/micrometer/micrometer-commons/1.13.4/micrometer-commons-1.13.4.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-starter-actuator/3.3.4/spring-boot-starter-actuator-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-actuator-autoconfigure/3.3.4/spring-boot-actuator-autoconfigure-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-actuator/3.3.4/spring-boot-actuator-3.3.4.jar:/Users/thekumarsai/.m2/repository/io/micrometer/micrometer-jakarta9/1.13.4/micrometer-jakarta9-1.13.4.jar:/Users/thekumarsai/.m2/repository/io/micrometer/micrometer-core/1.13.4/micrometer-core-1.13.4.jar:/Users/thekumarsai/.m2/repository/org/hdrhistogram/HdrHistogram/2.2.2/HdrHistogram-2.2.2.jar:/Users/thekumarsai/.m2/repository/org/latencyutils/LatencyUtils/2.0.3/LatencyUtils-2.0.3.jar:/Users/thekumarsai/.m2/repository/org/postgresql/postgresql/42.7.4/postgresql-42.7.4.jar:/Users/thekumarsai/.m2/repository/org/checkerframework/checker-qual/3.42.0/checker-qual-3.42.0.jar:/Users/thekumarsai/.m2/repository/org/flywaydb/flyway-core/10.10.0/flyway-core-10.10.0.jar:/Users/thekumarsai/.m2/repository/com/fasterxml/jackson/dataformat/jackson-dataformat-toml/2.17.2/jackson-dataformat-toml-2.17.2.jar:/Users/thekumarsai/.m2/repository/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar:/Users/thekumarsai/.m2/repository/org/flywaydb/flyway-database-postgresql/10.10.0/flyway-database-postgresql-10.10.0.jar:/Users/thekumarsai/.m2/repository/io/jsonwebtoken/jjwt-api/0.12.6/jjwt-api-0.12.6.jar:/Users/thekumarsai/.m2/repository/io/jsonwebtoken/jjwt-impl/0.12.6/jjwt-impl-0.12.6.jar:/Users/thekumarsai/.m2/repository/io/jsonwebtoken/jjwt-jackson/0.12.6/jjwt-jackson-0.12.6.jar:/Users/thekumarsai/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.17.2/jackson-databind-2.17.2.jar:/Users/thekumarsai/.m2/repository/org/springdoc/springdoc-openapi-starter-webmvc-ui/2.6.0/springdoc-openapi-starter-webmvc-ui-2.6.0.jar:/Users/thekumarsai/.m2/repository/org/springdoc/springdoc-openapi-starter-webmvc-api/2.6.0/springdoc-openapi-starter-webmvc-api-2.6.0.jar:/Users/thekumarsai/.m2/repository/org/springdoc/springdoc-openapi-starter-common/2.6.0/springdoc-openapi-starter-common-2.6.0.jar:/Users/thekumarsai/.m2/repository/io/swagger/core/v3/swagger-core-jakarta/2.2.22/swagger-core-jakarta-2.2.22.jar:/Users/thekumarsai/.m2/repository/org/apache/commons/commons-lang3/3.14.0/commons-lang3-3.14.0.jar:/Users/thekumarsai/.m2/repository/io/swagger/core/v3/swagger-annotations-jakarta/2.2.22/swagger-annotations-jakarta-2.2.22.jar:/Users/thekumarsai/.m2/repository/io/swagger/core/v3/swagger-models-jakarta/2.2.22/swagger-models-jakarta-2.2.22.jar:/Users/thekumarsai/.m2/repository/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.17.2/jackson-dataformat-yaml-2.17.2.jar:/Users/thekumarsai/.m2/repository/org/webjars/swagger-ui/5.17.14/swagger-ui-5.17.14.jar:/Users/thekumarsai/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.17.2/jackson-datatype-jsr310-2.17.2.jar:/Users/thekumarsai/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.17.2/jackson-annotations-2.17.2.jar:/Users/thekumarsai/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.17.2/jackson-core-2.17.2.jar:/Users/thekumarsai/.m2/repository/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-starter-test/3.3.4/spring-boot-starter-test-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-test/3.3.4/spring-boot-test-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/3.3.4/spring-boot-test-autoconfigure-3.3.4.jar:/Users/thekumarsai/.m2/repository/com/jayway/jsonpath/json-path/2.9.0/json-path-2.9.0.jar:/Users/thekumarsai/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.2/jakarta.xml.bind-api-4.0.2.jar:/Users/thekumarsai/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.3/jakarta.activation-api-2.1.3.jar:/Users/thekumarsai/.m2/repository/net/minidev/json-smart/2.5.1/json-smart-2.5.1.jar:/Users/thekumarsai/.m2/repository/net/minidev/accessors-smart/2.5.1/accessors-smart-2.5.1.jar:/Users/thekumarsai/.m2/repository/org/ow2/asm/asm/9.6/asm-9.6.jar:/Users/thekumarsai/.m2/repository/org/assertj/assertj-core/3.25.3/assertj-core-3.25.3.jar:/Users/thekumarsai/.m2/repository/org/awaitility/awaitility/4.2.2/awaitility-4.2.2.jar:/Users/thekumarsai/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/Users/thekumarsai/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.3/junit-jupiter-5.10.3.jar:/Users/thekumarsai/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.3/junit-jupiter-params-5.10.3.jar:/Users/thekumarsai/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.3/junit-jupiter-engine-5.10.3.jar:/Users/thekumarsai/.m2/repository/org/mockito/mockito-core/5.11.0/mockito-core-5.11.0.jar:/Users/thekumarsai/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.19/byte-buddy-agent-1.14.19.jar:/Users/thekumarsai/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/Users/thekumarsai/.m2/repository/org/mockito/mockito-junit-jupiter/5.11.0/mockito-junit-jupiter-5.11.0.jar:/Users/thekumarsai/.m2/repository/org/skyscreamer/jsonassert/1.5.3/jsonassert-1.5.3.jar:/Users/thekumarsai/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/Users/thekumarsai/.m2/repository/org/springframework/spring-core/6.1.13/spring-core-6.1.13.jar:/Users/thekumarsai/.m2/repository/org/springframework/spring-jcl/6.1.13/spring-jcl-6.1.13.jar:/Users/thekumarsai/.m2/repository/org/springframework/spring-test/6.1.13/spring-test-6.1.13.jar:/Users/thekumarsai/.m2/repository/org/xmlunit/xmlunit-core/2.9.1/xmlunit-core-2.9.1.jar:/Users/thekumarsai/.m2/repository/org/springframework/security/spring-security-test/6.3.3/spring-security-test-6.3.3.jar:/Users/thekumarsai/.m2/repository/org/springframework/security/spring-security-core/6.3.3/spring-security-core-6.3.3.jar:/Users/thekumarsai/.m2/repository/org/springframework/security/spring-security-crypto/6.3.3/spring-security-crypto-6.3.3.jar:/Users/thekumarsai/.m2/repository/org/springframework/kafka/spring-kafka-test/3.2.4/spring-kafka-test-3.2.4.jar:/Users/thekumarsai/.m2/repository/org/apache/zookeeper/zookeeper/3.8.4/zookeeper-3.8.4.jar:/Users/thekumarsai/.m2/repository/org/apache/zookeeper/zookeeper-jute/3.8.4/zookeeper-jute-3.8.4.jar:/Users/thekumarsai/.m2/repository/org/apache/yetus/audience-annotations/0.12.0/audience-annotations-0.12.0.jar:/Users/thekumarsai/.m2/repository/io/netty/netty-handler/4.1.113.Final/netty-handler-4.1.113.Final.jar:/Users/thekumarsai/.m2/repository/io/netty/netty-common/4.1.113.Final/netty-common-4.1.113.Final.jar:/Users/thekumarsai/.m2/repository/io/netty/netty-resolver/4.1.113.Final/netty-resolver-4.1.113.Final.jar:/Users/thekumarsai/.m2/repository/io/netty/netty-buffer/4.1.113.Final/netty-buffer-4.1.113.Final.jar:/Users/thekumarsai/.m2/repository/io/netty/netty-transport/4.1.113.Final/netty-transport-4.1.113.Final.jar:/Users/thekumarsai/.m2/repository/io/netty/netty-transport-native-unix-common/4.1.113.Final/netty-transport-native-unix-common-4.1.113.Final.jar:/Users/thekumarsai/.m2/repository/io/netty/netty-codec/4.1.113.Final/netty-codec-4.1.113.Final.jar:/Users/thekumarsai/.m2/repository/io/netty/netty-transport-native-epoll/4.1.113.Final/netty-transport-native-epoll-4.1.113.Final.jar:/Users/thekumarsai/.m2/repository/io/netty/netty-transport-classes-epoll/4.1.113.Final/netty-transport-classes-epoll-4.1.113.Final.jar:/Users/thekumarsai/.m2/repository/ch/qos/logback/logback-core/1.5.8/logback-core-1.5.8.jar:/Users/thekumarsai/.m2/repository/ch/qos/logback/logback-classic/1.5.8/logback-classic-1.5.8.jar:/Users/thekumarsai/.m2/repository/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar:/Users/thekumarsai/.m2/repository/org/apache/kafka/kafka-clients/3.7.1/kafka-clients-3.7.1-test.jar:/Users/thekumarsai/.m2/repository/org/apache/kafka/kafka-metadata/3.7.1/kafka-metadata-3.7.1.jar:/Users/thekumarsai/.m2/repository/org/apache/kafka/kafka-raft/3.7.1/kafka-raft-3.7.1.jar:/Users/thekumarsai/.m2/repository/com/yammer/metrics/metrics-core/2.2.0/metrics-core-2.2.0.jar:/Users/thekumarsai/.m2/repository/org/apache/kafka/kafka-server-common/3.7.1/kafka-server-common-3.7.1.jar:/Users/thekumarsai/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/Users/thekumarsai/.m2/repository/org/pcollections/pcollections/4.0.1/pcollections-4.0.1.jar:/Users/thekumarsai/.m2/repository/org/apache/kafka/kafka-server-common/3.7.1/kafka-server-common-3.7.1-test.jar:/Users/thekumarsai/.m2/repository/org/apache/kafka/kafka-streams-test-utils/3.7.1/kafka-streams-test-utils-3.7.1.jar:/Users/thekumarsai/.m2/repository/org/apache/kafka/kafka-streams/3.7.1/kafka-streams-3.7.1.jar:/Users/thekumarsai/.m2/repository/org/rocksdb/rocksdbjni/7.9.2/rocksdbjni-7.9.2.jar:/Users/thekumarsai/.m2/repository/org/apache/kafka/kafka_2.13/3.7.1/kafka_2.13-3.7.1.jar:/Users/thekumarsai/.m2/repository/org/scala-lang/scala-library/2.13.12/scala-library-2.13.12.jar:/Users/thekumarsai/.m2/repository/org/apache/kafka/kafka-group-coordinator/3.7.1/kafka-group-coordinator-3.7.1.jar:/Users/thekumarsai/.m2/repository/org/apache/kafka/kafka-storage-api/3.7.1/kafka-storage-api-3.7.1.jar:/Users/thekumarsai/.m2/repository/org/apache/kafka/kafka-tools-api/3.7.1/kafka-tools-api-3.7.1.jar:/Users/thekumarsai/.m2/repository/org/apache/kafka/kafka-storage/3.7.1/kafka-storage-3.7.1.jar:/Users/thekumarsai/.m2/repository/com/github/ben-manes/caffeine/caffeine/3.1.8/caffeine-3.1.8.jar:/Users/thekumarsai/.m2/repository/com/google/errorprone/error_prone_annotations/2.21.1/error_prone_annotations-2.21.1.jar:/Users/thekumarsai/.m2/repository/org/apache/kafka/kafka-server/3.7.1/kafka-server-3.7.1.jar:/Users/thekumarsai/.m2/repository/net/sourceforge/argparse4j/argparse4j/0.7.0/argparse4j-0.7.0.jar:/Users/thekumarsai/.m2/repository/commons-validator/commons-validator/1.7/commons-validator-1.7.jar:/Users/thekumarsai/.m2/repository/commons-beanutils/commons-beanutils/1.9.4/commons-beanutils-1.9.4.jar:/Users/thekumarsai/.m2/repository/commons-digester/commons-digester/2.1/commons-digester-2.1.jar:/Users/thekumarsai/.m2/repository/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar:/Users/thekumarsai/.m2/repository/com/fasterxml/jackson/module/jackson-module-scala_2.13/2.17.2/jackson-module-scala_2.13-2.17.2.jar:/Users/thekumarsai/.m2/repository/com/thoughtworks/paranamer/paranamer/2.8/paranamer-2.8.jar:/Users/thekumarsai/.m2/repository/com/fasterxml/jackson/dataformat/jackson-dataformat-csv/2.17.2/jackson-dataformat-csv-2.17.2.jar:/Users/thekumarsai/.m2/repository/org/bitbucket/b_c/jose4j/0.9.4/jose4j-0.9.4.jar:/Users/thekumarsai/.m2/repository/org/scala-lang/modules/scala-collection-compat_2.13/2.10.0/scala-collection-compat_2.13-2.10.0.jar:/Users/thekumarsai/.m2/repository/org/scala-lang/modules/scala-java8-compat_2.13/1.0.2/scala-java8-compat_2.13-1.0.2.jar:/Users/thekumarsai/.m2/repository/org/scala-lang/scala-reflect/2.13.12/scala-reflect-2.13.12.jar:/Users/thekumarsai/.m2/repository/com/typesafe/scala-logging/scala-logging_2.13/3.9.4/scala-logging_2.13-3.9.4.jar:/Users/thekumarsai/.m2/repository/io/dropwizard/metrics/metrics-core/4.1.12.1/metrics-core-4.1.12.1.jar:/Users/thekumarsai/.m2/repository/commons-cli/commons-cli/1.4/commons-cli-1.4.jar:/Users/thekumarsai/.m2/repository/org/apache/kafka/kafka_2.13/3.7.1/kafka_2.13-3.7.1-test.jar:/Users/thekumarsai/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.3/junit-jupiter-api-5.10.3.jar:/Users/thekumarsai/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/thekumarsai/.m2/repository/org/junit/platform/junit-platform-commons/1.10.3/junit-platform-commons-1.10.3.jar:/Users/thekumarsai/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/thekumarsai/.m2/repository/org/junit/platform/junit-platform-launcher/1.10.3/junit-platform-launcher-1.10.3.jar:/Users/thekumarsai/.m2/repository/org/junit/platform/junit-platform-engine/1.10.3/junit-platform-engine-1.10.3.jar:/Users/thekumarsai/.m2/repository/com/h2database/h2/2.2.224/h2-2.2.224.jar:"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Asia/Kolkata"/>
+    <property name="org.jboss.logging.provider" value="slf4j"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="21"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="IN"/>
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/thekumarsai/Developer/card-benefits-activation-engine/backend/target/surefire/surefirebooter-20261116201444305_3.jar /Users/thekumarsai/Developer/card-benefits-activation-engine/backend/target/surefire 2026-11-16T20-14-44_260-jvmRun1 surefire-20261116201444305_1tmp surefire_0-20261116201444305_2tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/thekumarsai/Developer/card-benefits-activation-engine/backend/target/test-classes:/Users/thekumarsai/Developer/card-benefits-activation-engine/backend/target/classes:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-starter-web/3.3.4/spring-boot-starter-web-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-starter/3.3.4/spring-boot-starter-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot/3.3.4/spring-boot-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/3.3.4/spring-boot-autoconfigure-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-starter-logging/3.3.4/spring-boot-starter-logging-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.23.1/log4j-to-slf4j-2.23.1.jar:/Users/thekumarsai/.m2/repository/org/apache/logging/log4j/log4j-api/2.23.1/log4j-api-2.23.1.jar:/Users/thekumarsai/.m2/repository/org/slf4j/jul-to-slf4j/2.0.16/jul-to-slf4j-2.0.16.jar:/Users/thekumarsai/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/Users/thekumarsai/.m2/repository/org/yaml/snakeyaml/2.2/snakeyaml-2.2.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-starter-json/3.3.4/spring-boot-starter-json-3.3.4.jar:/Users/thekumarsai/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.17.2/jackson-datatype-jdk8-2.17.2.jar:/Users/thekumarsai/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.17.2/jackson-module-parameter-names-2.17.2.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/3.3.4/spring-boot-starter-tomcat-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/10.1.30/tomcat-embed-core-10.1.30.jar:/Users/thekumarsai/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.30/tomcat-embed-websocket-10.1.30.jar:/Users/thekumarsai/.m2/repository/org/springframework/spring-web/6.1.13/spring-web-6.1.13.jar:/Users/thekumarsai/.m2/repository/org/springframework/spring-beans/6.1.13/spring-beans-6.1.13.jar:/Users/thekumarsai/.m2/repository/org/springframework/spring-webmvc/6.1.13/spring-webmvc-6.1.13.jar:/Users/thekumarsai/.m2/repository/org/springframework/spring-expression/6.1.13/spring-expression-6.1.13.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-starter-data-jpa/3.3.4/spring-boot-starter-data-jpa-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-starter-aop/3.3.4/spring-boot-starter-aop-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/aspectj/aspectjweaver/1.9.22.1/aspectjweaver-1.9.22.1.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/3.3.4/spring-boot-starter-jdbc-3.3.4.jar:/Users/thekumarsai/.m2/repository/com/zaxxer/HikariCP/5.1.0/HikariCP-5.1.0.jar:/Users/thekumarsai/.m2/repository/org/springframework/spring-jdbc/6.1.13/spring-jdbc-6.1.13.jar:/Users/thekumarsai/.m2/repository/org/hibernate/orm/hibernate-core/6.5.3.Final/hibernate-core-6.5.3.Final.jar:/Users/thekumarsai/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.1.0/jakarta.persistence-api-3.1.0.jar:/Users/thekumarsai/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/Users/thekumarsai/.m2/repository/org/jboss/logging/jboss-logging/3.5.3.Final/jboss-logging-3.5.3.Final.jar:/Users/thekumarsai/.m2/repository/org/hibernate/common/hibernate-commons-annotations/6.0.6.Final/hibernate-commons-annotations-6.0.6.Final.jar:/Users/thekumarsai/.m2/repository/io/smallrye/jandex/3.1.2/jandex-3.1.2.jar:/Users/thekumarsai/.m2/repository/com/fasterxml/classmate/1.7.0/classmate-1.7.0.jar:/Users/thekumarsai/.m2/repository/net/bytebuddy/byte-buddy/1.14.19/byte-buddy-1.14.19.jar:/Users/thekumarsai/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.5/jaxb-runtime-4.0.5.jar:/Users/thekumarsai/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.5/jaxb-core-4.0.5.jar:/Users/thekumarsai/.m2/repository/org/eclipse/angus/angus-activation/2.0.2/angus-activation-2.0.2.jar:/Users/thekumarsai/.m2/repository/org/glassfish/jaxb/txw2/4.0.5/txw2-4.0.5.jar:/Users/thekumarsai/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar:/Users/thekumarsai/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/Users/thekumarsai/.m2/repository/org/antlr/antlr4-runtime/4.13.0/antlr4-runtime-4.13.0.jar:/Users/thekumarsai/.m2/repository/org/springframework/data/spring-data-jpa/3.3.4/spring-data-jpa-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/springframework/data/spring-data-commons/3.3.4/spring-data-commons-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/springframework/spring-orm/6.1.13/spring-orm-6.1.13.jar:/Users/thekumarsai/.m2/repository/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16.jar:/Users/thekumarsai/.m2/repository/org/springframework/spring-aspects/6.1.13/spring-aspects-6.1.13.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-starter-validation/3.3.4/spring-boot-starter-validation-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/10.1.30/tomcat-embed-el-10.1.30.jar:/Users/thekumarsai/.m2/repository/org/hibernate/validator/hibernate-validator/8.0.1.Final/hibernate-validator-8.0.1.Final.jar:/Users/thekumarsai/.m2/repository/jakarta/validation/jakarta.validation-api/3.0.2/jakarta.validation-api-3.0.2.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-starter-security/3.3.4/spring-boot-starter-security-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/springframework/spring-aop/6.1.13/spring-aop-6.1.13.jar:/Users/thekumarsai/.m2/repository/org/springframework/security/spring-security-config/6.3.3/spring-security-config-6.3.3.jar:/Users/thekumarsai/.m2/repository/org/springframework/security/spring-security-web/6.3.3/spring-security-web-6.3.3.jar:/Users/thekumarsai/.m2/repository/org/springframework/kafka/spring-kafka/3.2.4/spring-kafka-3.2.4.jar:/Users/thekumarsai/.m2/repository/org/springframework/spring-context/6.1.13/spring-context-6.1.13.jar:/Users/thekumarsai/.m2/repository/org/springframework/spring-messaging/6.1.13/spring-messaging-6.1.13.jar:/Users/thekumarsai/.m2/repository/org/springframework/spring-tx/6.1.13/spring-tx-6.1.13.jar:/Users/thekumarsai/.m2/repository/org/springframework/retry/spring-retry/2.0.9/spring-retry-2.0.9.jar:/Users/thekumarsai/.m2/repository/org/apache/kafka/kafka-clients/3.7.1/kafka-clients-3.7.1.jar:/Users/thekumarsai/.m2/repository/com/github/luben/zstd-jni/1.5.6-3/zstd-jni-1.5.6-3.jar:/Users/thekumarsai/.m2/repository/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.jar:/Users/thekumarsai/.m2/repository/org/xerial/snappy/snappy-java/1.1.10.5/snappy-java-1.1.10.5.jar:/Users/thekumarsai/.m2/repository/io/micrometer/micrometer-observation/1.13.4/micrometer-observation-1.13.4.jar:/Users/thekumarsai/.m2/repository/io/micrometer/micrometer-commons/1.13.4/micrometer-commons-1.13.4.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-starter-actuator/3.3.4/spring-boot-starter-actuator-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-actuator-autoconfigure/3.3.4/spring-boot-actuator-autoconfigure-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-actuator/3.3.4/spring-boot-actuator-3.3.4.jar:/Users/thekumarsai/.m2/repository/io/micrometer/micrometer-jakarta9/1.13.4/micrometer-jakarta9-1.13.4.jar:/Users/thekumarsai/.m2/repository/io/micrometer/micrometer-core/1.13.4/micrometer-core-1.13.4.jar:/Users/thekumarsai/.m2/repository/org/hdrhistogram/HdrHistogram/2.2.2/HdrHistogram-2.2.2.jar:/Users/thekumarsai/.m2/repository/org/latencyutils/LatencyUtils/2.0.3/LatencyUtils-2.0.3.jar:/Users/thekumarsai/.m2/repository/org/postgresql/postgresql/42.7.4/postgresql-42.7.4.jar:/Users/thekumarsai/.m2/repository/org/checkerframework/checker-qual/3.42.0/checker-qual-3.42.0.jar:/Users/thekumarsai/.m2/repository/org/flywaydb/flyway-core/10.10.0/flyway-core-10.10.0.jar:/Users/thekumarsai/.m2/repository/com/fasterxml/jackson/dataformat/jackson-dataformat-toml/2.17.2/jackson-dataformat-toml-2.17.2.jar:/Users/thekumarsai/.m2/repository/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar:/Users/thekumarsai/.m2/repository/org/flywaydb/flyway-database-postgresql/10.10.0/flyway-database-postgresql-10.10.0.jar:/Users/thekumarsai/.m2/repository/io/jsonwebtoken/jjwt-api/0.12.6/jjwt-api-0.12.6.jar:/Users/thekumarsai/.m2/repository/io/jsonwebtoken/jjwt-impl/0.12.6/jjwt-impl-0.12.6.jar:/Users/thekumarsai/.m2/repository/io/jsonwebtoken/jjwt-jackson/0.12.6/jjwt-jackson-0.12.6.jar:/Users/thekumarsai/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.17.2/jackson-databind-2.17.2.jar:/Users/thekumarsai/.m2/repository/org/springdoc/springdoc-openapi-starter-webmvc-ui/2.6.0/springdoc-openapi-starter-webmvc-ui-2.6.0.jar:/Users/thekumarsai/.m2/repository/org/springdoc/springdoc-openapi-starter-webmvc-api/2.6.0/springdoc-openapi-starter-webmvc-api-2.6.0.jar:/Users/thekumarsai/.m2/repository/org/springdoc/springdoc-openapi-starter-common/2.6.0/springdoc-openapi-starter-common-2.6.0.jar:/Users/thekumarsai/.m2/repository/io/swagger/core/v3/swagger-core-jakarta/2.2.22/swagger-core-jakarta-2.2.22.jar:/Users/thekumarsai/.m2/repository/org/apache/commons/commons-lang3/3.14.0/commons-lang3-3.14.0.jar:/Users/thekumarsai/.m2/repository/io/swagger/core/v3/swagger-annotations-jakarta/2.2.22/swagger-annotations-jakarta-2.2.22.jar:/Users/thekumarsai/.m2/repository/io/swagger/core/v3/swagger-models-jakarta/2.2.22/swagger-models-jakarta-2.2.22.jar:/Users/thekumarsai/.m2/repository/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.17.2/jackson-dataformat-yaml-2.17.2.jar:/Users/thekumarsai/.m2/repository/org/webjars/swagger-ui/5.17.14/swagger-ui-5.17.14.jar:/Users/thekumarsai/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.17.2/jackson-datatype-jsr310-2.17.2.jar:/Users/thekumarsai/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.17.2/jackson-annotations-2.17.2.jar:/Users/thekumarsai/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.17.2/jackson-core-2.17.2.jar:/Users/thekumarsai/.m2/repository/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-starter-test/3.3.4/spring-boot-starter-test-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-test/3.3.4/spring-boot-test-3.3.4.jar:/Users/thekumarsai/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/3.3.4/spring-boot-test-autoconfigure-3.3.4.jar:/Users/thekumarsai/.m2/repository/com/jayway/jsonpath/json-path/2.9.0/json-path-2.9.0.jar:/Users/thekumarsai/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.2/jakarta.xml.bind-api-4.0.2.jar:/Users/thekumarsai/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.3/jakarta.activation-api-2.1.3.jar:/Users/thekumarsai/.m2/repository/net/minidev/json-smart/2.5.1/json-smart-2.5.1.jar:/Users/thekumarsai/.m2/repository/net/minidev/accessors-smart/2.5.1/accessors-smart-2.5.1.jar:/Users/thekumarsai/.m2/repository/org/ow2/asm/asm/9.6/asm-9.6.jar:/Users/thekumarsai/.m2/repository/org/assertj/assertj-core/3.25.3/assertj-core-3.25.3.jar:/Users/thekumarsai/.m2/repository/org/awaitility/awaitility/4.2.2/awaitility-4.2.2.jar:/Users/thekumarsai/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/Users/thekumarsai/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.3/junit-jupiter-5.10.3.jar:/Users/thekumarsai/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.3/junit-jupiter-params-5.10.3.jar:/Users/thekumarsai/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.3/junit-jupiter-engine-5.10.3.jar:/Users/thekumarsai/.m2/repository/org/mockito/mockito-core/5.11.0/mockito-core-5.11.0.jar:/Users/thekumarsai/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.19/byte-buddy-agent-1.14.19.jar:/Users/thekumarsai/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/Users/thekumarsai/.m2/repository/org/mockito/mockito-junit-jupiter/5.11.0/mockito-junit-jupiter-5.11.0.jar:/Users/thekumarsai/.m2/repository/org/skyscreamer/jsonassert/1.5.3/jsonassert-1.5.3.jar:/Users/thekumarsai/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/Users/thekumarsai/.m2/repository/org/springframework/spring-core/6.1.13/spring-core-6.1.13.jar:/Users/thekumarsai/.m2/repository/org/springframework/spring-jcl/6.1.13/spring-jcl-6.1.13.jar:/Users/thekumarsai/.m2/repository/org/springframework/spring-test/6.1.13/spring-test-6.1.13.jar:/Users/thekumarsai/.m2/repository/org/xmlunit/xmlunit-core/2.9.1/xmlunit-core-2.9.1.jar:/Users/thekumarsai/.m2/repository/org/springframework/security/spring-security-test/6.3.3/spring-security-test-6.3.3.jar:/Users/thekumarsai/.m2/repository/org/springframework/security/spring-security-core/6.3.3/spring-security-core-6.3.3.jar:/Users/thekumarsai/.m2/repository/org/springframework/security/spring-security-crypto/6.3.3/spring-security-crypto-6.3.3.jar:/Users/thekumarsai/.m2/repository/org/springframework/kafka/spring-kafka-test/3.2.4/spring-kafka-test-3.2.4.jar:/Users/thekumarsai/.m2/repository/org/apache/zookeeper/zookeeper/3.8.4/zookeeper-3.8.4.jar:/Users/thekumarsai/.m2/repository/org/apache/zookeeper/zookeeper-jute/3.8.4/zookeeper-jute-3.8.4.jar:/Users/thekumarsai/.m2/repository/org/apache/yetus/audience-annotations/0.12.0/audience-annotations-0.12.0.jar:/Users/thekumarsai/.m2/repository/io/netty/netty-handler/4.1.113.Final/netty-handler-4.1.113.Final.jar:/Users/thekumarsai/.m2/repository/io/netty/netty-common/4.1.113.Final/netty-common-4.1.113.Final.jar:/Users/thekumarsai/.m2/repository/io/netty/netty-resolver/4.1.113.Final/netty-resolver-4.1.113.Final.jar:/Users/thekumarsai/.m2/repository/io/netty/netty-buffer/4.1.113.Final/netty-buffer-4.1.113.Final.jar:/Users/thekumarsai/.m2/repository/io/netty/netty-transport/4.1.113.Final/netty-transport-4.1.113.Final.jar:/Users/thekumarsai/.m2/repository/io/netty/netty-transport-native-unix-common/4.1.113.Final/netty-transport-native-unix-common-4.1.113.Final.jar:/Users/thekumarsai/.m2/repository/io/netty/netty-codec/4.1.113.Final/netty-codec-4.1.113.Final.jar:/Users/thekumarsai/.m2/repository/io/netty/netty-transport-native-epoll/4.1.113.Final/netty-transport-native-epoll-4.1.113.Final.jar:/Users/thekumarsai/.m2/repository/io/netty/netty-transport-classes-epoll/4.1.113.Final/netty-transport-classes-epoll-4.1.113.Final.jar:/Users/thekumarsai/.m2/repository/ch/qos/logback/logback-core/1.5.8/logback-core-1.5.8.jar:/Users/thekumarsai/.m2/repository/ch/qos/logback/logback-classic/1.5.8/logback-classic-1.5.8.jar:/Users/thekumarsai/.m2/repository/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar:/Users/thekumarsai/.m2/repository/org/apache/kafka/kafka-clients/3.7.1/kafka-clients-3.7.1-test.jar:/Users/thekumarsai/.m2/repository/org/apache/kafka/kafka-metadata/3.7.1/kafka-metadata-3.7.1.jar:/Users/thekumarsai/.m2/repository/org/apache/kafka/kafka-raft/3.7.1/kafka-raft-3.7.1.jar:/Users/thekumarsai/.m2/repository/com/yammer/metrics/metrics-core/2.2.0/metrics-core-2.2.0.jar:/Users/thekumarsai/.m2/repository/org/apache/kafka/kafka-server-common/3.7.1/kafka-server-common-3.7.1.jar:/Users/thekumarsai/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/Users/thekumarsai/.m2/repository/org/pcollections/pcollections/4.0.1/pcollections-4.0.1.jar:/Users/thekumarsai/.m2/repository/org/apache/kafka/kafka-server-common/3.7.1/kafka-server-common-3.7.1-test.jar:/Users/thekumarsai/.m2/repository/org/apache/kafka/kafka-streams-test-utils/3.7.1/kafka-streams-test-utils-3.7.1.jar:/Users/thekumarsai/.m2/repository/org/apache/kafka/kafka-streams/3.7.1/kafka-streams-3.7.1.jar:/Users/thekumarsai/.m2/repository/org/rocksdb/rocksdbjni/7.9.2/rocksdbjni-7.9.2.jar:/Users/thekumarsai/.m2/repository/org/apache/kafka/kafka_2.13/3.7.1/kafka_2.13-3.7.1.jar:/Users/thekumarsai/.m2/repository/org/scala-lang/scala-library/2.13.12/scala-library-2.13.12.jar:/Users/thekumarsai/.m2/repository/org/apache/kafka/kafka-group-coordinator/3.7.1/kafka-group-coordinator-3.7.1.jar:/Users/thekumarsai/.m2/repository/org/apache/kafka/kafka-storage-api/3.7.1/kafka-storage-api-3.7.1.jar:/Users/thekumarsai/.m2/repository/org/apache/kafka/kafka-tools-api/3.7.1/kafka-tools-api-3.7.1.jar:/Users/thekumarsai/.m2/repository/org/apache/kafka/kafka-storage/3.7.1/kafka-storage-3.7.1.jar:/Users/thekumarsai/.m2/repository/com/github/ben-manes/caffeine/caffeine/3.1.8/caffeine-3.1.8.jar:/Users/thekumarsai/.m2/repository/com/google/errorprone/error_prone_annotations/2.21.1/error_prone_annotations-2.21.1.jar:/Users/thekumarsai/.m2/repository/org/apache/kafka/kafka-server/3.7.1/kafka-server-3.7.1.jar:/Users/thekumarsai/.m2/repository/net/sourceforge/argparse4j/argparse4j/0.7.0/argparse4j-0.7.0.jar:/Users/thekumarsai/.m2/repository/commons-validator/commons-validator/1.7/commons-validator-1.7.jar:/Users/thekumarsai/.m2/repository/commons-beanutils/commons-beanutils/1.9.4/commons-beanutils-1.9.4.jar:/Users/thekumarsai/.m2/repository/commons-digester/commons-digester/2.1/commons-digester-2.1.jar:/Users/thekumarsai/.m2/repository/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar:/Users/thekumarsai/.m2/repository/com/fasterxml/jackson/module/jackson-module-scala_2.13/2.17.2/jackson-module-scala_2.13-2.17.2.jar:/Users/thekumarsai/.m2/repository/com/thoughtworks/paranamer/paranamer/2.8/paranamer-2.8.jar:/Users/thekumarsai/.m2/repository/com/fasterxml/jackson/dataformat/jackson-dataformat-csv/2.17.2/jackson-dataformat-csv-2.17.2.jar:/Users/thekumarsai/.m2/repository/org/bitbucket/b_c/jose4j/0.9.4/jose4j-0.9.4.jar:/Users/thekumarsai/.m2/repository/org/scala-lang/modules/scala-collection-compat_2.13/2.10.0/scala-collection-compat_2.13-2.10.0.jar:/Users/thekumarsai/.m2/repository/org/scala-lang/modules/scala-java8-compat_2.13/1.0.2/scala-java8-compat_2.13-1.0.2.jar:/Users/thekumarsai/.m2/repository/org/scala-lang/scala-reflect/2.13.12/scala-reflect-2.13.12.jar:/Users/thekumarsai/.m2/repository/com/typesafe/scala-logging/scala-logging_2.13/3.9.4/scala-logging_2.13-3.9.4.jar:/Users/thekumarsai/.m2/repository/io/dropwizard/metrics/metrics-core/4.1.12.1/metrics-core-4.1.12.1.jar:/Users/thekumarsai/.m2/repository/commons-cli/commons-cli/1.4/commons-cli-1.4.jar:/Users/thekumarsai/.m2/repository/org/apache/kafka/kafka_2.13/3.7.1/kafka_2.13-3.7.1-test.jar:/Users/thekumarsai/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.3/junit-jupiter-api-5.10.3.jar:/Users/thekumarsai/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/thekumarsai/.m2/repository/org/junit/platform/junit-platform-commons/1.10.3/junit-platform-commons-1.10.3.jar:/Users/thekumarsai/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/thekumarsai/.m2/repository/org/junit/platform/junit-platform-launcher/1.10.3/junit-platform-launcher-1.10.3.jar:/Users/thekumarsai/.m2/repository/org/junit/platform/junit-platform-engine/1.10.3/junit-platform-engine-1.10.3.jar:/Users/thekumarsai/.m2/repository/com/h2database/h2/2.2.224/h2-2.2.224.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/thekumarsai"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-04-15"/>
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/thekumarsai/Developer/card-benefits-activation-engine/backend"/>
+    <property name="java.vm.compressedOopsMode" value="Non-zero disjoint base"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="FILE_LOG_CHARSET" value="UTF-8"/>
+    <property name="java.awt.headless" value="true"/>
+    <property name="apple.awt.application.name" value="ForkedBooter"/>
+    <property name="surefire.real.class.path" value="/Users/thekumarsai/Developer/card-benefits-activation-engine/backend/target/surefire/surefirebooter-20261116201444305_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.runtime.version" value="21.0.7+8-LTS-245"/>
+    <property name="user.name" value="thekumarsai"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="27.2"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="/Users/thekumarsai/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="/var/folders/d6/yx09q4qx5mv5pkxkntjk7ncm0000gn/T/"/>
+    <property name="com.zaxxer.hikari.pool_number" value="1"/>
+    <property name="java.version" value="21.0.7"/>
+    <property name="user.dir" value="/Users/thekumarsai/Developer/card-benefits-activation-engine/backend"/>
+    <property name="os.arch" value="aarch64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="PID" value="14254"/>
+    <property name="CONSOLE_LOG_CHARSET" value="UTF-8"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/thekumarsai/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="21.0.7+8-LTS-245"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.class.version" value="65.0"/>
+    <property name="LOGGED_APPLICATION_NAME" value="[card-benefits-activation-engine] "/>
+  </properties>
+  <testcase name="shouldFindActiveBenefitRulesOrderedByPriority" classname="com.cbae.engine.repository.RepositoryIntegrationTest" time="0.011">
+    <system-out><![CDATA[2026-11-16T20:14:51.752+05:30  INFO 14254 --- [card-benefits-activation-engine] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.cbae.engine.repository.RepositoryIntegrationTest]: RepositoryIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-16T20:14:51.765+05:30  INFO 14254 --- [card-benefits-activation-engine] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.cbae.engine.CardBenefitsActivationEngineApplication for test class com.cbae.engine.repository.RepositoryIntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.4)
+
+2026-11-16T20:14:51.785+05:30  INFO 14254 --- [card-benefits-activation-engine] [           main] c.c.e.r.RepositoryIntegrationTest        : Starting RepositoryIntegrationTest using Java 21.0.7 with PID 14254 (started by thekumarsai in /Users/thekumarsai/Developer/card-benefits-activation-engine/backend)
+2026-11-16T20:14:51.785+05:30 DEBUG 14254 --- [card-benefits-activation-engine] [           main] c.c.e.r.RepositoryIntegrationTest        : Running with Spring Boot v3.3.4, Spring v6.1.13
+2026-11-16T20:14:51.785+05:30  INFO 14254 --- [card-benefits-activation-engine] [           main] c.c.e.r.RepositoryIntegrationTest        : The following 1 profile is active: "test"
+2026-11-16T20:14:51.830+05:30  INFO 14254 --- [card-benefits-activation-engine] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-16T20:14:51.841+05:30  INFO 14254 --- [card-benefits-activation-engine] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 11 JPA repository interfaces.
+2026-11-16T20:14:51.850+05:30  INFO 14254 --- [card-benefits-activation-engine] [           main] beddedDataSourceBeanFactoryPostProcessor : Replacing 'dataSource' DataSource bean with embedded version
+2026-11-16T20:14:51.863+05:30  INFO 14254 --- [card-benefits-activation-engine] [           main] o.s.j.d.e.EmbeddedDatabaseFactory        : Starting embedded database: url='jdbc:h2:mem:587b8340-456c-44dd-8ad4-3d03f7ef59d2;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2026-11-16T20:14:51.876+05:30  INFO 14254 --- [card-benefits-activation-engine] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-16T20:14:51.877+05:30  INFO 14254 --- [card-benefits-activation-engine] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-16T20:14:51.881+05:30  INFO 14254 --- [card-benefits-activation-engine] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-16T20:14:51.882+05:30  WARN 14254 --- [card-benefits-activation-engine] [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-11-16T20:14:52.010+05:30  INFO 14254 --- [card-benefits-activation-engine] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: 
+    drop table if exists audit_events cascade 
+Hibernate: 
+    drop table if exists benefit_opportunities cascade 
+Hibernate: 
+    drop table if exists benefit_rules cascade 
+Hibernate: 
+    drop table if exists card_benefits cascade 
+Hibernate: 
+    drop table if exists cards cascade 
+Hibernate: 
+    drop table if exists claim_evidences cascade 
+Hibernate: 
+    drop table if exists claims cascade 
+Hibernate: 
+    drop table if exists customers cascade 
+Hibernate: 
+    drop table if exists notifications cascade 
+Hibernate: 
+    drop table if exists transaction_events cascade 
+Hibernate: 
+    drop table if exists transactions cascade 
+Hibernate: 
+    create table audit_events (
+        timestamp timestamp(6) with time zone not null,
+        id uuid not null,
+        action varchar(255) not null,
+        actor_id varchar(255) not null,
+        actor_role varchar(255) not null,
+        details_json TEXT,
+        entity_id varchar(255) not null,
+        entity_name varchar(255) not null,
+        event_type varchar(255) not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table benefit_opportunities (
+        confidence_score numeric(5,4) not null,
+        potential_claim_amount numeric(12,2) not null,
+        created_at timestamp(6) with time zone not null,
+        expiry_date timestamp(6) with time zone,
+        updated_at timestamp(6) with time zone not null,
+        benefit_id uuid not null,
+        card_id uuid not null,
+        customer_id uuid not null,
+        id uuid not null,
+        transaction_id uuid not null,
+        eligibility_reasons TEXT not null,
+        prefill_data_json TEXT not null,
+        required_evidence_list TEXT not null,
+        benefit_type enum ('AUTO_RENTAL_COLLISION','EXTENDED_WARRANTY','PURCHASE_PROTECTION','RETURN_PROTECTION','TRAVEL_DELAY') not null,
+        status enum ('CLAIM_INITIATED','DETECTED','DISMISSED','EXPIRED','VIEWED') not null,
+        primary key (id),
+        constraint uk_transaction_benefit unique (transaction_id, benefit_type)
+    )
+Hibernate: 
+    create table benefit_rules (
+        is_active boolean not null,
+        priority integer not null,
+        created_at timestamp(6) with time zone not null,
+        id uuid not null,
+        parameters_json TEXT not null,
+        rule_code varchar(255) not null unique,
+        rule_description TEXT,
+        rule_name varchar(255) not null,
+        benefit_type enum ('AUTO_RENTAL_COLLISION','EXTENDED_WARRANTY','PURCHASE_PROTECTION','RETURN_PROTECTION','TRAVEL_DELAY') not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table card_benefits (
+        annual_max_limit numeric(12,2) not null,
+        coverage_window_days integer,
+        deductible_amount numeric(12,2) not null,
+        max_coverage_amount numeric(12,2) not null,
+        min_delay_hours integer,
+        created_at timestamp(6) with time zone not null,
+        card_id uuid not null,
+        id uuid not null,
+        terms_and_conditions TEXT,
+        benefit_type enum ('AUTO_RENTAL_COLLISION','EXTENDED_WARRANTY','PURCHASE_PROTECTION','RETURN_PROTECTION','TRAVEL_DELAY') not null,
+        status enum ('ACTIVE','BLOCKED','EXPIRED','INACTIVE') not null,
+        primary key (id),
+        constraint uk_card_benefit unique (card_id, benefit_type)
+    )
+Hibernate: 
+    create table cards (
+        card_number_last4 varchar(4) not null,
+        expiry_month integer not null,
+        expiry_year integer not null,
+        created_at timestamp(6) with time zone not null,
+        updated_at timestamp(6) with time zone not null,
+        customer_id uuid not null,
+        id uuid not null,
+        cardholder_name varchar(255) not null,
+        card_network enum ('AMEX','DISCOVER','MASTERCARD','VISA') not null,
+        card_tier enum ('CASH_BACK','GOLD','PLATINUM','SAPPHIRE_RESERVE','STANDARD') not null,
+        status enum ('ACTIVE','BLOCKED','EXPIRED','INACTIVE') not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table claim_evidences (
+        is_verified boolean not null,
+        created_at timestamp(6) with time zone not null,
+        file_size bigint,
+        claim_id uuid not null,
+        id uuid not null,
+        file_name varchar(255) not null,
+        file_url TEXT not null,
+        mime_type varchar(255),
+        evidence_type enum ('AIRLINE_DELAY_STATEMENT','BOARDING_PASS','DAMAGE_PHOTO','ITEM_PHOTO','MERCHANT_DENIAL_PROOF','OTHER','POLICE_REPORT','RECEIPT') not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table claims (
+        approved_amount numeric(12,2),
+        requested_amount numeric(12,2) not null,
+        created_at timestamp(6) with time zone not null,
+        incident_date timestamp(6) with time zone not null,
+        updated_at timestamp(6) with time zone not null,
+        card_benefit_id uuid not null,
+        customer_id uuid not null,
+        id uuid not null,
+        opportunity_id uuid,
+        transaction_id uuid not null,
+        adjudication_notes TEXT,
+        claim_reference_number varchar(255) not null unique,
+        submission_notes TEXT,
+        status enum ('ADDITIONAL_INFORMATION_REQUIRED','APPROVED','CLOSED','DRAFT','PAID','PARTIALLY_APPROVED','READY_FOR_REVIEW','REJECTED','SUBMITTED','UNDER_REVIEW') not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table customers (
+        created_at timestamp(6) with time zone not null,
+        updated_at timestamp(6) with time zone not null,
+        id uuid not null,
+        email varchar(255) not null unique,
+        full_name varchar(255) not null,
+        password_hash varchar(255) not null,
+        role enum ('ROLE_ADMIN','ROLE_CUSTOMER','ROLE_OPERATIONS') not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table notifications (
+        is_read boolean not null,
+        created_at timestamp(6) with time zone not null,
+        customer_id uuid not null,
+        id uuid not null,
+        deep_link varchar(255),
+        message TEXT not null,
+        title varchar(255) not null,
+        notification_type enum ('CLAIM_STATUS_UPDATED','EVIDENCE_REQUESTED','OPPORTUNITY_DETECTED','OPPORTUNITY_EXPIRING') not null,
+        priority enum ('HIGH','LOW','MEDIUM') not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table transaction_events (
+        processed boolean not null,
+        event_timestamp timestamp(6) with time zone not null,
+        id uuid not null,
+        transaction_id uuid,
+        idempotency_key varchar(255) not null unique,
+        payload_json TEXT not null,
+        event_type enum ('TRANSACTION_CANCELLED','TRANSACTION_CREATED','TRANSACTION_REFUNDED','TRANSACTION_SETTLED','TRANSACTION_UPDATED','TRAVEL_DELAYED') not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table transactions (
+        amount numeric(12,2) not null,
+        created_at timestamp(6) with time zone not null,
+        transaction_timestamp timestamp(6) with time zone not null,
+        currency varchar(10) not null,
+        mcc_code varchar(10),
+        card_id uuid not null,
+        id uuid not null,
+        category_classification varchar(255),
+        merchant_category varchar(255),
+        merchant_name varchar(255) not null,
+        transaction_reference varchar(255) not null unique,
+        travel_metadata_json TEXT,
+        status enum ('CANCELLED','PENDING','REFUNDED','SETTLED') not null,
+        primary key (id)
+    )
+Hibernate: 
+    alter table if exists benefit_opportunities 
+       add constraint FK4cgvktx1fcg9j1hlngw64ivk8 
+       foreign key (benefit_id) 
+       references card_benefits
+Hibernate: 
+    alter table if exists benefit_opportunities 
+       add constraint FKsj2a7bosl5n09onoa87arxbbu 
+       foreign key (card_id) 
+       references cards
+Hibernate: 
+    alter table if exists benefit_opportunities 
+       add constraint FKdlhhqtekvj8qy0tbjsdff3gsp 
+       foreign key (customer_id) 
+       references customers
+Hibernate: 
+    alter table if exists benefit_opportunities 
+       add constraint FKbgqlj9gmdmvl56ckmuy52inu0 
+       foreign key (transaction_id) 
+       references transactions
+Hibernate: 
+    alter table if exists card_benefits 
+       add constraint FKhinxq0mv0toqtqsv2uiyjsfe2 
+       foreign key (card_id) 
+       references cards
+Hibernate: 
+    alter table if exists cards 
+       add constraint FK3ta7cnyyuv26sr3j2sxrr10bu 
+       foreign key (customer_id) 
+       references customers
+Hibernate: 
+    alter table if exists claim_evidences 
+       add constraint FK5erd76wp0dev3aggoaih7vy03 
+       foreign key (claim_id) 
+       references claims
+Hibernate: 
+    alter table if exists claims 
+       add constraint FK8parjsihvcunpub4e5kvvikhu 
+       foreign key (card_benefit_id) 
+       references card_benefits
+Hibernate: 
+    alter table if exists claims 
+       add constraint FKlq8n4o9soxyesmu73vguhasx8 
+       foreign key (customer_id) 
+       references customers
+Hibernate: 
+    alter table if exists claims 
+       add constraint FKqseeb9bfimbidu2ts5by0j11w 
+       foreign key (opportunity_id) 
+       references benefit_opportunities
+Hibernate: 
+    alter table if exists claims 
+       add constraint FKqqosgjx0omuhetoibjdo9ua9h 
+       foreign key (transaction_id) 
+       references transactions
+Hibernate: 
+    alter table if exists notifications 
+       add constraint FK30dp6ycner3dgso3scgc9vghy 
+       foreign key (customer_id) 
+       references customers
+Hibernate: 
+    alter table if exists transaction_events 
+       add constraint FK88kdr2r741c86yf2qs0202gc5 
+       foreign key (transaction_id) 
+       references transactions
+Hibernate: 
+    alter table if exists transactions 
+       add constraint FKjxdscq0bxpy0pl465vvsqc89j 
+       foreign key (card_id) 
+       references cards
+2026-11-16T20:14:52.030+05:30  INFO 14254 --- [card-benefits-activation-engine] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-16T20:14:52.111+05:30  INFO 14254 --- [card-benefits-activation-engine] [           main] c.c.e.r.RepositoryIntegrationTest        : Started RepositoryIntegrationTest in 0.345 seconds (process running for 7.748)
+Hibernate: 
+    insert 
+    into
+        customers
+        (created_at, email, full_name, password_hash, role, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        cards
+        (card_network, card_number_last4, card_tier, cardholder_name, created_at, customer_id, expiry_month, expiry_year, status, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        card_benefits
+        (annual_max_limit, benefit_type, card_id, coverage_window_days, created_at, deductible_amount, max_coverage_amount, min_delay_hours, status, terms_and_conditions, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        benefit_rules
+        (benefit_type, created_at, is_active, parameters_json, priority, rule_code, rule_description, rule_name, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        benefit_rules
+        (benefit_type, created_at, is_active, parameters_json, priority, rule_code, rule_description, rule_name, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    select
+        br1_0.id,
+        br1_0.benefit_type,
+        br1_0.created_at,
+        br1_0.is_active,
+        br1_0.parameters_json,
+        br1_0.priority,
+        br1_0.rule_code,
+        br1_0.rule_description,
+        br1_0.rule_name 
+    from
+        benefit_rules br1_0 
+    where
+        br1_0.benefit_type=? 
+        and br1_0.is_active=? 
+    order by
+        br1_0.priority
+]]></system-out>
+  </testcase>
+  <testcase name="shouldAggregateOpportunityMetrics" classname="com.cbae.engine.repository.RepositoryIntegrationTest" time="0.021">
+    <system-out><![CDATA[Hibernate: 
+    insert 
+    into
+        customers
+        (created_at, email, full_name, password_hash, role, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        cards
+        (card_network, card_number_last4, card_tier, cardholder_name, created_at, customer_id, expiry_month, expiry_year, status, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        card_benefits
+        (annual_max_limit, benefit_type, card_id, coverage_window_days, created_at, deductible_amount, max_coverage_amount, min_delay_hours, status, terms_and_conditions, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        transactions
+        (amount, card_id, category_classification, created_at, currency, mcc_code, merchant_category, merchant_name, status, transaction_reference, transaction_timestamp, travel_metadata_json, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        transactions
+        (amount, card_id, category_classification, created_at, currency, mcc_code, merchant_category, merchant_name, status, transaction_reference, transaction_timestamp, travel_metadata_json, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        benefit_opportunities
+        (benefit_id, benefit_type, card_id, confidence_score, created_at, customer_id, eligibility_reasons, expiry_date, potential_claim_amount, prefill_data_json, required_evidence_list, status, transaction_id, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        benefit_opportunities
+        (benefit_id, benefit_type, card_id, confidence_score, created_at, customer_id, eligibility_reasons, expiry_date, potential_claim_amount, prefill_data_json, required_evidence_list, status, transaction_id, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    select
+        coalesce(sum(bo1_0.potential_claim_amount), 0) 
+    from
+        benefit_opportunities bo1_0 
+    where
+        bo1_0.customer_id=? 
+        and bo1_0.status='DETECTED'
+Hibernate: 
+    select
+        count(bo1_0.id) 
+    from
+        benefit_opportunities bo1_0 
+    where
+        bo1_0.customer_id=? 
+        and bo1_0.status='DETECTED'
+]]></system-out>
+  </testcase>
+  <testcase name="shouldAggregateClaimAmountsByStatus" classname="com.cbae.engine.repository.RepositoryIntegrationTest" time="0.01">
+    <system-out><![CDATA[Hibernate: 
+    insert 
+    into
+        customers
+        (created_at, email, full_name, password_hash, role, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        cards
+        (card_network, card_number_last4, card_tier, cardholder_name, created_at, customer_id, expiry_month, expiry_year, status, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        card_benefits
+        (annual_max_limit, benefit_type, card_id, coverage_window_days, created_at, deductible_amount, max_coverage_amount, min_delay_hours, status, terms_and_conditions, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        transactions
+        (amount, card_id, category_classification, created_at, currency, mcc_code, merchant_category, merchant_name, status, transaction_reference, transaction_timestamp, travel_metadata_json, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    insert 
+    into
+        claims
+        (adjudication_notes, approved_amount, card_benefit_id, claim_reference_number, created_at, customer_id, incident_date, opportunity_id, requested_amount, status, submission_notes, transaction_id, updated_at, id) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: 
+    select
+        coalesce(sum(c1_0.approved_amount), 0) 
+    from
+        claims c1_0 
+    where
+        c1_0.customer_id=? 
+        and c1_0.status in ('APPROVED', 'PAID')
+]]></system-out>
+  </testcase>
+</testsuite>
