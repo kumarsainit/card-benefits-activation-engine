@@ -1,0 +1,43 @@
+== date
+Mon Nov 16 14:44:16 UTC 2026
+== git
+58a4a76f8020b6484e15a8bf2c6794bfa2a28166
+perf/measured-metrics
+== hardware
+      Model Name: MacBook Pro
+      Model Identifier: MacBookPro18,1
+      Chip: Apple M1 Pro
+      Total Number of Cores: 10 (8 Performance and 2 Efficiency)
+      Memory: 16 GB
+== macOS
+ProductName:		macOS
+ProductVersion:		27.2
+BuildVersion:		26B123
+== java
+java version "21.0.7" 2025-04-15 LTS
+Java(TM) SE Runtime Environment (build 21.0.7+8-LTS-245)
+Java HotSpot(TM) 64-Bit Server VM (build 21.0.7+8-LTS-245, mixed mode, sharing)
+== maven
+Apache Maven 3.9.16 (2bdd9fddda4b155ebf8000e807eb73fd829a51d5)
+Maven home: /opt/homebrew/Cellar/maven/3.9.16/libexec
+Java version: 21.0.7, vendor: Oracle Corporation, runtime: /Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home
+Default locale: en_IN, platform encoding: UTF-8
+OS name: "mac os x", version: "27.2", arch: "aarch64", family: "mac"
+== node
+v25.5.0
+11.8.0
+== k6
+k6 v2.4.0 (commit/devel, go1.27.4, darwin/arm64)
+== docker
+client 29.8.0 server 29.8.0
+ Kernel Version: 7.0.12-linuxkit
+ Operating System: Docker Desktop
+ CPUs: 10
+ Total Memory: 7.748GiB
+Docker Compose version v5.5.1
+cbae-kafka apache/kafka:3.7.0
+cbae-postgres postgres:16-alpine
+cbae-redis redis:7.2-alpine
+/cbae-postgres NanoCpus=0 Memory=0
+/cbae-kafka NanoCpus=0 Memory=0
+/cbae-redis NanoCpus=0 Memory=0

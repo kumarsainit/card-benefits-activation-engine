@@ -76,3 +76,6 @@ docker-data/
 postgres-data/
 kafka-data/
 redis-data/
+perf/.backend.pid
+perf/.backend.log
+perf/.backend*.log
