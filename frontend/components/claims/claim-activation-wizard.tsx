@@ -79,6 +79,8 @@ export function ClaimActivationWizard({ opportunity, onSuccess }: ClaimActivatio
     }
   };
 
+  const idempotencyKeyRef = React.useRef(`idemp-claim-${opportunity.id}-${Date.now()}`);
+
   const handleSubmit = async () => {
     if (!isConfirmed) {
       setErrorMsg('You must review and confirm the accuracy of this claim before submission.');
@@ -86,7 +88,9 @@ export function ClaimActivationWizard({ opportunity, onSuccess }: ClaimActivatio
     }
 
     setErrorMsg(null);
-    const idempotencyKey = `idemp-claim-${opportunity.id}-${Date.now()}`;
+    // Same key for every attempt from this wizard, so a retry after a timeout/network error cannot create a
+    // second claim (the backend returns the claim created by the first attempt).
+    const idempotencyKey = idempotencyKeyRef.current;
 
     try {
       const claim = await submitClaimMutation.mutateAsync({

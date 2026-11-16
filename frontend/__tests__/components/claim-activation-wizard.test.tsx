@@ -103,4 +103,34 @@ describe('ClaimActivationWizard Component', () => {
       expect(screen.getByText(/Claim #CLM-2026-A83B1/i)).toBeInTheDocument();
     });
   });
+  it('reuses the same Idempotency-Key when the user retries a failed submit', async () => {
+    const user = userEvent.setup();
+    const submitSpy = vi.spyOn(apiClient, 'submitClaim')
+      .mockRejectedValueOnce(Object.assign(new Error('Network timeout'), { status: 0 }))
+      .mockResolvedValueOnce({
+        id: 'claim-1', claimReferenceNumber: 'CLM-2026-A83B1', customerId: 'cust-1',
+        transactionId: mockOpportunity.transactionId, cardBenefitId: mockOpportunity.benefitId,
+        requestedAmount: 1499.0, status: 'SUBMITTED', incidentDate: '2026-09-01T12:00:00Z',
+        submissionNotes: '', createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(),
+      });
+
+    render(
+      <QueryProvider>
+        <ClaimActivationWizard opportunity={mockOpportunity} />
+      </QueryProvider>
+    );
+    await user.click(screen.getByRole('button', { name: /Continue to Incident Details/i }));
+    await user.click(screen.getByRole('button', { name: /Continue to Evidence/i }));
+    await user.click(screen.getByRole('button', { name: /Continue to Review/i }));
+    await user.click(screen.getByRole('checkbox'));
+
+    await user.click(screen.getByRole('button', { name: /Submit Claim/i })); // fails
+    await waitFor(() => expect(submitSpy).toHaveBeenCalledTimes(1));
+    await user.click(screen.getByRole('button', { name: /Submit Claim/i })); // retry
+    await waitFor(() => expect(submitSpy).toHaveBeenCalledTimes(2));
+
+    const firstKey = submitSpy.mock.calls[0][1];
+    expect(firstKey).toMatch(/^idemp-claim-opp-1-/);
+    expect(submitSpy.mock.calls[1][1]).toBe(firstKey);
+  });
 });

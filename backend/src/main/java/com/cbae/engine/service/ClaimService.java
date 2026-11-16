@@ -9,6 +9,9 @@ import com.cbae.engine.dto.claim.ClaimSubmissionRequest;
 import com.cbae.engine.exception.BusinessValidationException;
 import com.cbae.engine.exception.ResourceNotFoundException;
 import com.cbae.engine.repository.*;
+import org.springframework.util.StringUtils;
+import java.util.Optional;
+import com.cbae.engine.exception.ConflictException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -37,6 +40,17 @@ public class ClaimService {
 
     @Transactional
     public ClaimResponseDto submitClaim(UUID customerId, ClaimSubmissionRequest request, String idempotencyKey) {
+        // Replay of an already-processed submission (client retry): return the original claim, no side effects.
+        if (StringUtils.hasText(idempotencyKey)) {
+            Optional<Claim> existing = claimRepository.findByIdempotencyKey(idempotencyKey);
+            if (existing.isPresent()) {
+                if (!existing.get().getCustomer().getId().equals(customerId)) {
+                    throw new ConflictException("Idempotency-Key already used");
+                }
+                return mapToDto(existing.get());
+            }
+        }
+
         Customer customer = customerRepository.findById(customerId)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer not found"));
 
@@ -75,6 +89,7 @@ public class ClaimService {
                 .transaction(transaction)
                 .cardBenefit(benefit)
                 .claimReferenceNumber(refNumber)
+                .idempotencyKey(StringUtils.hasText(idempotencyKey) ? idempotencyKey : null)
                 .requestedAmount(request.getRequestedAmount())
                 .status(ClaimStatus.SUBMITTED)
                 .incidentDate(request.getIncidentDate() != null ? request.getIncidentDate() : Instant.now())

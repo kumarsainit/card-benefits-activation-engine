@@ -49,6 +49,9 @@ public class Claim {
     @Column(name = "claim_reference_number", nullable = false, unique = true)
     private String claimReferenceNumber;
 
+    @Column(name = "idempotency_key", unique = true)
+    private String idempotencyKey;
+
     @Column(name = "requested_amount", nullable = false, precision = 12, scale = 2)
     private BigDecimal requestedAmount;
 

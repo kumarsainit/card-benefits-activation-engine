@@ -1,0 +1,2 @@
+{"group" : "retry-test stable_key", "opportunities_submitted_twice" : 50, "claims_rows" : 100, "opportunities_with_more_than_one_claim" : 50}
+{"group" : "retry-test wizard_keys", "opportunities_submitted_twice" : 50, "claims_rows" : 100, "opportunities_with_more_than_one_claim" : 50}

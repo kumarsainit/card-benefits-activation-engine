@@ -1,0 +1,31 @@
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+
+ RUN  v2.1.9 /Users/thekumarsai/Developer/card-benefits-activation-engine/frontend
+
+ ❯ __tests__/components/claim-activation-wizard.test.tsx (3 tests | 1 failed) 376ms
+   × ClaimActivationWizard Component > reuses the same Idempotency-Key when the user retries a failed submit 91ms
+     → expected 'idemp-claim-opp-1-1794861069827' to be 'idemp-claim-opp-1-1794861069814' // Object.is equality
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  __tests__/components/claim-activation-wizard.test.tsx > ClaimActivationWizard Component > reuses the same Idempotency-Key when the user retries a failed submit
+AssertionError: expected 'idemp-claim-opp-1-1794861069827' to be 'idemp-claim-opp-1-1794861069814' // Object.is equality
+
+Expected: "idemp-claim-opp-1-1794861069814"
+Received: "idemp-claim-opp-1-1794861069827"
+
+ ❯ __tests__/components/claim-activation-wizard.test.tsx:134:40
+    132|     const firstKey = submitSpy.mock.calls[0][1];
+    133|     expect(firstKey).toMatch(/^idemp-claim-opp-1-/);
+    134|     expect(submitSpy.mock.calls[1][1]).toBe(firstKey);
+       |                                        ^
+    135|   });
+    136| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  02:01:07
+   Duration  2.10s (transform 90ms, setup 39ms, collect 1.10s, tests 376ms, environment 193ms, prepare 43ms)
+

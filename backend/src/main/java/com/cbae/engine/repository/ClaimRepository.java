@@ -18,6 +18,7 @@ public interface ClaimRepository extends JpaRepository<Claim, UUID> {
     List<Claim> findByCustomerIdAndStatusOrderByCreatedAtDesc(UUID customerId, ClaimStatus status);
     Optional<Claim> findByClaimReferenceNumber(String claimReferenceNumber);
     boolean existsByClaimReferenceNumber(String claimReferenceNumber);
+    Optional<Claim> findByIdempotencyKey(String idempotencyKey);
     List<Claim> findAllByOrderByCreatedAtDesc();
 
     @Query("SELECT COALESCE(SUM(c.requestedAmount), 0) FROM Claim c WHERE c.customer.id = :customerId AND c.status IN ('SUBMITTED', 'UNDER_REVIEW')")

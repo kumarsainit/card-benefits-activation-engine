@@ -1,0 +1,99 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: perf/k6/claim_workflow.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 1 max VUs, 20m30s max duration (incl. graceful stop):
+              * wf: 99 iterations shared among 1 VUs (maxDuration: 20m0s, gracefulStop: 30s)
+
+time="2026-11-17T01:58:15+05:30" level=info msg="first claim response: 201 {\"success\":true,\"message\":\"Claim submitted successfully\",\"data\":{\"id\":\"d23c3c32-fb02-4fef-9e21-db5e1548b6b7\",\"claimReferenceNumber\":\"CLM-2026-2F4661\",\"opportunityId\":\"415eab90-4e82-42d5-a6cd-9d17348d644e\",\"customerId\":\"11111111-1111-1111-1111-111111111111\",\"customerName\":\"Alex Carter\",\"customerEmail" source=console
+
+running (00m01.0s), 1/1 VUs, 16 complete and 0 interrupted iterations
+wf     [  16% ] 1 VUs  00m00.9s/20m0s  16/99 shared iters
+
+running (00m02.0s), 1/1 VUs, 36 complete and 0 interrupted iterations
+wf     [  36% ] 1 VUs  00m01.9s/20m0s  36/99 shared iters
+
+running (00m03.0s), 1/1 VUs, 58 complete and 0 interrupted iterations
+wf     [  59% ] 1 VUs  00m02.9s/20m0s  58/99 shared iters
+
+running (00m04.0s), 1/1 VUs, 81 complete and 0 interrupted iterations
+wf     [  82% ] 1 VUs  00m03.9s/20m0s  81/99 shared iters
+{
+ "wf_1_ingest_ms": {
+  "med": 16.747,
+  "p(50)": 16.747,
+  "p(95)": 23.7975,
+  "p(99)": 25.29118,
+  "max": 25.349,
+  "avg": 17.09630303030303,
+  "count": 99,
+  "min": 11.896
+ },
+ "wf_2_list_opportunities_ms": {
+  "p(50)": 9.4,
+  "p(95)": 12.814699999999998,
+  "p(99)": 14.4523,
+  "max": 15.741,
+  "avg": 9.886878787878786,
+  "count": 99,
+  "min": 8.155,
+  "med": 9.4
+ },
+ "wf_3_opportunity_detail_ms": {
+  "min": 5.409,
+  "med": 7.606,
+  "p(50)": 7.606,
+  "p(95)": 10.1512,
+  "p(99)": 13.70154,
+  "max": 13.826,
+  "avg": 7.7159292929292915,
+  "count": 99
+ },
+ "wf_4_submit_claim_ms": {
+  "p(50)": 9.736,
+  "p(95)": 14.1078,
+  "p(99)": 15.515279999999999,
+  "max": 16.264,
+  "avg": 10.140272727272732,
+  "count": 99,
+  "min": 6.669,
+  "med": 9.736
+ },
+ "wf_total_ms": {
+  "p(50)": 44.215999999999994,
+  "p(95)": 56.73939999999999,
+  "p(99)": 61.244879999999995,
+  "max": 67.511,
+  "avg": 44.83938383838383,
+  "count": 99,
+  "min": 35.452,
+  "med": 44.215999999999994
+ },
+ "wf_claim_created": {
+  "count": 99,
+  "rate": 20.86657406685313
+ },
+ "wf_claim_failed": null,
+ "wf_fields_prefilled_from_opportunity": {
+  "count": 99,
+  "min": 4,
+  "med": 4,
+  "p(50)": 4,
+  "p(95)": 4,
+  "p(99)": 4,
+  "max": 4,
+  "avg": 4
+ },
+ "claim_fields_total": 7
+}
+
+running (00m04.7s), 0/1 VUs, 99 complete and 0 interrupted iterations
+wf   ✓ [ 100% ] 1 VUs  00m04.7s/20m0s  99/99 shared iters
