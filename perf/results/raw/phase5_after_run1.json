@@ -1,0 +1,101 @@
+{
+  "label" : "phase5_after_run1",
+  "run_id" : "mwjp7wo3",
+  "topic" : "perf.transactions.incoming.mwjp7wo3",
+  "reliability" : {
+    "published" : 10000,
+    "published_ok" : 9450,
+    "published_transient_fail_once" : 500,
+    "published_malformed_invalid_json" : 25,
+    "published_malformed_unknown_card" : 25,
+    "persisted_ok" : 9450,
+    "persisted_transient_recovered" : 500,
+    "persisted_unknown_card" : 0,
+    "injected_transient_failures_thrown" : 500,
+    "dlt_records_total" : 50,
+    "dlt_records_by_kind" : {
+      "badcard" : 25,
+      "badjson" : 25
+    },
+    "valid_events_lost" : 0,
+    "malformed_events_lost_without_trace" : 0,
+    "events_unaccounted_total" : 0,
+    "db" : {
+      "transactions" : 9950,
+      "transaction_events" : 9950,
+      "opportunities" : 15000,
+      "dup_transaction_refs" : 0,
+      "dup_idempotency_keys" : 0,
+      "dup_opportunities" : 0
+    },
+    "expected_opportunities_for_persisted" : 15000,
+    "wall_clock_seconds_publish_to_drained" : 172.79,
+    "drain_detect_ms" : 172675
+  },
+  "throughput" : {
+    "published" : 10000,
+    "persisted" : 10000,
+    "first_to_last_persist_seconds" : 41.81,
+    "events_per_second_first_to_last_persist" : 239.19,
+    "events_per_second_publish_to_drained_wall_clock" : 222.11,
+    "db" : {
+      "transactions" : 10000,
+      "transaction_events" : 10000,
+      "opportunities" : 15000,
+      "dup_transaction_refs" : 0,
+      "dup_idempotency_keys" : 0,
+      "dup_opportunities" : 0
+    }
+  },
+  "latency" : {
+    "rate_per_second" : 50,
+    "duration_seconds" : 60,
+    "published" : 3000,
+    "eligible_events_measured" : 2250,
+    "p50_ms" : 10.57,
+    "p95_ms" : 11.11,
+    "p99_ms" : 11.92,
+    "max_ms" : 17.65,
+    "note" : "producer send time (wall clock) -> earliest benefit_opportunities.created_at for that transaction (set by Hibernate at insert, same JVM clock)"
+  },
+  "idempotency" : {
+    "replayed_via_rest" : 1000,
+    "rest_2xx" : 1000,
+    "rest_non_2xx" : 0,
+    "replayed_via_kafka" : 1000,
+    "db_before" : {
+      "transactions" : 22950,
+      "transaction_events" : 22950,
+      "opportunities" : 34500,
+      "dup_transaction_refs" : 0,
+      "dup_idempotency_keys" : 0,
+      "dup_opportunities" : 0
+    },
+    "db_after_rest_replay" : {
+      "transactions" : 22950,
+      "transaction_events" : 22950,
+      "opportunities" : 34500,
+      "dup_transaction_refs" : 0,
+      "dup_idempotency_keys" : 0,
+      "dup_opportunities" : 0
+    },
+    "db_after_kafka_replay" : {
+      "transactions" : 22950,
+      "transaction_events" : 22950,
+      "opportunities" : 34500,
+      "dup_transaction_refs" : 0,
+      "dup_idempotency_keys" : 0,
+      "dup_opportunities" : 0
+    },
+    "new_transactions_created" : 0,
+    "new_opportunities_created" : 0
+  },
+  "final_db" : {
+    "transactions" : 22950,
+    "transaction_events" : 22950,
+    "opportunities" : 34500,
+    "dup_transaction_refs" : 0,
+    "dup_idempotency_keys" : 0,
+    "dup_opportunities" : 0
+  }
+}
